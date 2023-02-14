@@ -1,8 +1,8 @@
 # oh my zsh
 ZSH_THEME="kphoen"
+ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
-ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 # aliases
 alias ga="git add"
