@@ -1,8 +1,20 @@
-# oh my zsh
-ZSH_THEME="kphoen"
+# prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '%b'
+precmd(){
+	vcs_info
+	local preprompt_left="%F{#96ceb4}%n@%F{#ffeead}%m:%F{#ff6f69}%(3~|%-1~/.../%1~|%2~) %F{#ffcc5c}on ${vcs_info_msg_0_}"
+	local preprompt_right="%F{#88d8b0}$(date +'%T')"
+	local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+	local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+	local num_filler_spaces=$((COLUMNS - preprompt_left_length - preprompt_right_length))
+	print -Pr $'\n'"$preprompt_left${(l:$num_filler_spaces:)}$preprompt_right"
+}
+
+PROMPT="$ "
+
+# zsh
 ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # aliases
 alias ga="git add"
