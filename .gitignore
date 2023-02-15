@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Exceptions
+!.gitconfig
+!.gitconfig.private.example
+!.gitignore
+!.zshrc
