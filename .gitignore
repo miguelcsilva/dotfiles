@@ -6,3 +6,5 @@
 !.gitconfig.private.example
 !.gitignore
 !.zshrc
+!.zsh/
+!.zsh/*
