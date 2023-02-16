@@ -2,7 +2,13 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '%b'
 precmd(){
         vcs_info
-        local preprompt_left="%F{#537c78}%n%F{white}@%F{#7ba591}%m%F{white}:%F{#cc222b}%(3~|%-1~/.../%1~|%2~) %F{white}on %F{#f15b4c}${vcs_info_msg_0_}"
+	git_display() {
+		  if [ -n "$vcs_info_msg_0_" ]; then
+   			echo "%F{#ffffff}on %F{#f15b4c}${vcs_info_msg_0_}"
+		  fi
+	}
+
+        local preprompt_left="%F{#537c78}%n%F{white}@%F{#7ba591}%m%F{white}:%F{#cc222b}%(3~|%-1~/.../%1~|%2~) $(git_display)"
         local preprompt_right="%F{#faa41b}$(date +'%T')"
         local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
         local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
