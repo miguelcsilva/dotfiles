@@ -29,7 +29,7 @@ alias gsw="git switch"
 
 
 # poetry
-export PATH="/home/miguelsilva/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
