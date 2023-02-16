@@ -6,5 +6,5 @@
 !.gitconfig.private.example
 !.gitignore
 !.zshrc
-!.zsh/
-!.zsh/*
+!.zsh/.completion
+!.zsh/.prompt
