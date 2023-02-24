@@ -5,6 +5,9 @@
 !.gitconfig
 !.gitconfig.private.example
 !.gitignore
+!.config
+!.config/pypoetry
+!.config/pypoetry/config.toml
 !.zshrc
 !.zsh/.completion
 !.zsh/.prompt
