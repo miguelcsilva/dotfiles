@@ -12,6 +12,7 @@ alias ll="ls -la"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
+alias sve="source .venv/bin/activate"
 
 # aliases - git
 alias ga="git add"
