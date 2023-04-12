@@ -24,6 +24,7 @@ alias gco="git checkout"
 alias gl='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
 alias gpl="git pull"
 alias gps="git push"
+alias gri="git rebase -i"
 alias grpo="git remote prune origin"
 alias gst="git status -sb"
 alias gsw="git switch"
