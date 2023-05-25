@@ -8,7 +8,6 @@ apt update
 
 # Simlinks
 ln -nfs /home/miguel/projects/dotfiles/.config /home/miguel/.config
-ln -nfs /home/miguel/projects/dotfiles/.git /home/miguel/.git
 ln -nfs /home/miguel/projects/dotfiles/.gitconfig /home/miguel/.gitconfig
 ln -nfs /home/miguel/projects/dotfiles/.zsh /home/miguel/.zsh
 ln -nfs /home/miguel/projects/dotfiles/.zshrc /home/miguel/.zshrc
