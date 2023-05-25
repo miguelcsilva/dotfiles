@@ -1,4 +1,19 @@
 # Setup
+# https://askubuntu.com/a/970898
+if ! [ $(id -u) = 0 ]; then
+   echo "The script need to be run as root." >&2
+   exit 1
+fi
+
+if [ $SUDO_USER ]; then
+    ORIGINAL_USER=$SUDO_USER
+else
+    ORIGINAL_USER=$(whoami)
+fi
+
+ORIGINAL_USER_HOME=$(sudo -u "$ORIGINAL_USER" sh -c 'echo $HOME')
+echo "$ORIGINAL_USER_HOME"
+
 ## DNS name resolution workaround
 echo "[network]\ngenerateResolvConf = false" >> /etc/wsl.conf
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
