@@ -39,11 +39,11 @@ chsh -s $(which zsh)
 
 ## Pyenv
 rm -rf $ORIGINAL_USER_HOME/.pyenv/
-#apt install make build-essential libssl-dev zlib1g-dev \
-#libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-#libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
-#curl https://pyenv.run | zsh
-#exec $SHELL
+apt install make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
+curl https://pyenv.run | sudo -u $ORIGINAL_USER zsh
+exec sudo -u $ORIGINAL_USER $SHELL
 
 ## Poetry
 
