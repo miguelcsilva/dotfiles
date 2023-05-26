@@ -1,7 +1,7 @@
 # Setup
 # https://askubuntu.com/a/970898
 if ! [ $(id -u) = 0 ]; then
-   echo "The script need to be run as root." >&2
+   echo "This script must be run with elevated privileges. Try: sudo ./install.sh" >&2
    exit 1
 fi
 
@@ -43,8 +43,9 @@ apt install make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
 curl https://pyenv.run | sudo -u $ORIGINAL_USER zsh
-exec sudo -u $ORIGINAL_USER $SHELL
 
 ## Poetry
+curl -sSL https://install.python-poetry.org | sudo -u $ORIGINAL_USER python3 -
 
-
+# Reset the shell
+exec sudo -u $ORIGINAL_USER $SHELL
