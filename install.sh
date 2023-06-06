@@ -33,7 +33,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 print_title "Update apt"
 apt update
 
-# Simlinks
+## Simlinks
 print_title "Create config files symlinks"
 rm -rf $ORIGINAL_USER_HOME/.config
 rm -rf $ORIGINAL_USER_HOME/.gitconfig
@@ -44,11 +44,20 @@ sudo -u $ORIGINAL_USER ln -nfs "$PWD/.gitconfig" $ORIGINAL_USER_HOME/.gitconfig
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zsh" $ORIGINAL_USER_HOME/.zsh
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zshrc" $ORIGINAL_USER_HOME/.zshrc
 
+## SSH
+print_title "Create SSH keys"
+sudo -u $ORIGINAL_USER ssh-keygen -b 2048 -t rsa -f $ORIGINAL_USER_HOME/.ssh/id_rsa -q -N ""
+
+## Create .gitconfig.private template
+print_title "Create .gitconfig.private template"
+sudo -u $ORIGINAL_USER cp "$PWD/.gitconfig.private.example" $ORIGINAL_USER_HOME/.gitconfig.private
+
 # Installations
 ## Zsh
 print_title "Install zsh"
 apt install zsh -y
 chsh -s $(which zsh)
+printf "Current shell: $SHELL"
 
 ## Pyenv
 print_title "Install pyenv"
