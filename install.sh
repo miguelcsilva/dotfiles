@@ -66,7 +66,3 @@ curl https://pyenv.run | sudo -u $ORIGINAL_USER zsh
 ## Poetry
 print_title "Install poetry"
 curl -sSL https://install.python-poetry.org | sudo -u $ORIGINAL_USER python3 -
-
-# Reset the shell
-print_title "Restart the shell"
-exec sudo -u $ORIGINAL_USER $SHELL
