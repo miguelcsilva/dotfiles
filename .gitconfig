@@ -1,7 +1,9 @@
 [include]
 	path = ~/.gitconfig.private
+
 [push]
 	autoSetupRemote = true
+
 [init]
 	defaultBranch = main
 
