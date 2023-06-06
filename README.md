@@ -13,3 +13,11 @@ ssh-keygen -b 2048
 ```
 git clone git@github.com:miguelcsilva/dotfiles.git
 ```
+### 4. Run the Ubuntu installtion
+```
+sudo ./install.sh
+```
+### 5. Configure the `~/.gitconfig.private` file
+```
+vim ~/.gitconfig.private
+```
