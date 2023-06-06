@@ -54,7 +54,6 @@ print_title "Install zsh"
 apt install zsh -y
 chsh -s $(which zsh)
 chsh -s $(which zsh) $ORIGINAL_USER
-printf "Current shell: $SHELL"
 
 ## Pyenv
 print_title "Install pyenv"
@@ -67,7 +66,3 @@ curl https://pyenv.run | sudo -u $ORIGINAL_USER zsh
 ## Poetry
 print_title "Install poetry"
 curl -sSL https://install.python-poetry.org | sudo -u $ORIGINAL_USER python3 -
-
-# Reset the shell
-print_title "Restart the shell"
-exec sudo -u $ORIGINAL_USER $SHELL
