@@ -8,7 +8,7 @@ print_title () {
 }
 
 # Setup
-# https://askubuntu.com/a/970898
+# ref: https://askubuntu.com/a/970898
 if ! [ $(id -u) = 0 ]; then
    echo "This script must be run with elevated privileges. Try: sudo ./install.sh" >&2
    exit 1
@@ -22,19 +22,19 @@ fi
 
 ORIGINAL_USER_HOME=$(sudo -u "$ORIGINAL_USER" sh -c 'echo $HOME')
 
-## DNS name resolution workaround
-print_title "Lock nameserver"
-rm -rf /etc/wsl.conf
-rm -rf /etc/resolv.conf
-echo "[network]\ngenerateResolvConf = false" >> /etc/wsl.conf
-echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+# ## DNS name resolution workaround (uncomment if needed).
+# print_title "Lock nameserver"
+# rm -rf /etc/wsl.conf
+# rm -rf /etc/resolv.conf
+# echo "[network]\ngenerateResolvConf = false" >> /etc/wsl.conf
+# echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 ## Advanced Package Tool (APT)
-print_title "Update apt"
+print_title "Updating apt"
 apt update
 
 ## Simlinks
-print_title "Create config files symlinks"
+print_title "Creating config files symlinks"
 rm -rf $ORIGINAL_USER_HOME/.config
 rm -rf $ORIGINAL_USER_HOME/.gitconfig
 rm -rf $ORIGINAL_USER_HOME/.zsh
@@ -45,18 +45,36 @@ sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zsh" $ORIGINAL_USER_HOME/.zsh
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zshrc" $ORIGINAL_USER_HOME/.zshrc
 
 ## Create .gitconfig.private template
-print_title "Create .gitconfig.private template"
+print_title "Creating .gitconfig.private template"
 sudo -u $ORIGINAL_USER cp "$PWD/.gitconfig.private.example" $ORIGINAL_USER_HOME/.gitconfig.private
 
-# Installations
+# Shell
 ## Zsh
-print_title "Install zsh"
+print_title "Installing zsh"
 apt install zsh -y
 chsh -s $(which zsh)
 chsh -s $(which zsh) $ORIGINAL_USER
 
+# Essential tools
+## Tree - folder structure
+print_title "Installing tree"
+apt install tree -y
+## Bat - model cat replacement
+print_title "Installing bat"
+apt install bat -y
+## Ripgrep - directory search
+print_title "Installing ripgrep"
+apt install ripgrep
+## Fzf - Fuzzy finder
+print_title "Installing fzf"
+apt install fzf
+## Zoxide - directory jump
+print_title "Installing zoxide"
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo -u $ORIGINAL_USER zsh
+
+# Python tools
 ## Pyenv
-print_title "Install pyenv"
+print_title "Installing pyenv"
 rm -rf $ORIGINAL_USER_HOME/.pyenv/
 apt install make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
@@ -64,5 +82,5 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 curl https://pyenv.run | sudo -u $ORIGINAL_USER zsh
 
 ## Poetry
-print_title "Install poetry"
+print_title "Installing poetry"
 curl -sSL https://install.python-poetry.org | sudo -u $ORIGINAL_USER python3 -
