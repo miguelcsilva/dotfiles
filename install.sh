@@ -39,10 +39,14 @@ rm -rf $ORIGINAL_USER_HOME/.config
 rm -rf $ORIGINAL_USER_HOME/.gitconfig
 rm -rf $ORIGINAL_USER_HOME/.zsh
 rm -rf $ORIGINAL_USER_HOME/.zshrc
+rm -rf $ORIGINAL_USER_HOME/.vimrc
+rm -rf $ORIGINAL_USER_HOME/.vim
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.config" $ORIGINAL_USER_HOME/.config
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.gitconfig" $ORIGINAL_USER_HOME/.gitconfig
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zsh" $ORIGINAL_USER_HOME/.zsh
 sudo -u $ORIGINAL_USER ln -nfs "$PWD/.zshrc" $ORIGINAL_USER_HOME/.zshrc
+sudo -u $ORIGINAL_USER ln -nfs "$PWD/.vimrc" $ORIGINAL_USER_HOME/.vimrc
+sudo -u $ORIGINAL_USER ln -nfs "$PWD/.vim" $ORIGINAL_USER_HOME/.vim
 
 ## Create .gitconfig.private template
 print_title "Creating .gitconfig.private template"

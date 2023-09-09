@@ -32,15 +32,11 @@ alias gsw="git switch"
 # Key remap
 bindkey "sb" history-incremental-search-backward
 
-## Essential tools
-### Tree
+# Tools
+# Tree
 alias tr="tree -a -L 1 -C"
-### Bat
+# Bat
 alias cat="batcat"
-### Zoxide
-eval "$(zoxide init zsh)"
-alias cd="z"
-alias zz="z -"
 
 # Poetry
 export PATH="$HOME/.local/bin:$PATH"
@@ -49,3 +45,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Zoxide
+eval "$(zoxide init zsh)"
+alias cd="z"
+alias zz="z -"
+
