@@ -13,6 +13,30 @@ fi
 
 eval "$(starship init zsh)"
 
+# Plugins
+## Syntax highlighting
+zinit light zsh-users/zsh-syntax-highlighting
+## Autocompletion
+zinit light zsh-users/zsh-completions
+autoload -U compinit && compinit
+## Autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+
+
+# Keybindings
+bindkey '^u' history-search-backward
+bindkey '^o' history-search-forward
+
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+
+
 # Aliases
 ## Basic
 alias c="clear"
