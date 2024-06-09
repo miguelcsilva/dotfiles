@@ -21,15 +21,19 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-## Fuzzy finder
-zi ice from"gh-r" as"program"
-zi light junegunn/fzf
-eval "$(fzf --zsh)"
-zinit light Aloxaf/fzf-tab
-## Zoxide
-zi ice from"gh-r" as"program"
-zi light ajeetdsouza/zoxide
-eval "$(zoxide init zsh)"
+
+# ## Fuzzy finder
+# zinit ice from"gh-r" as"program"
+# zinit light junegunn/fzf
+# eval "$(fzf --zsh)"
+# zinit light Aloxaf/fzf-tab
+# ## Zoxide
+# zinit ice from"gh-r" as"program"
+# zinit light ajeetdsouza/zoxide
+# eval "$(zoxide init zsh)"
+
+# Keybindings
+bindkey '^ ' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -48,11 +52,13 @@ setopt sharehistory
 # Aliases
 ## Basic
 alias c="clear"
+alias cat="batcat"
 alias cd="z"
 alias ls="ls --color=auto"
 alias ll="ls -lha"
-alias sve="source .venv/bin/activate"
 alias rl="source ~/.zshrc"
+alias sve="source .venv/bin/activate"
+alias tree="tree -C"
 
 ## Git
 alias ga="git add"
