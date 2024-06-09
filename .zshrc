@@ -10,8 +10,12 @@ source "${ZINIT_HOME}/zinit.zsh"
 if [ ! -e /usr/local/bin/starship ]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
-
 eval "$(starship init zsh)"
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Plugins
 ## Syntax highlighting
