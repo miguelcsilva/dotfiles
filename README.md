@@ -13,11 +13,17 @@ ssh-keygen -b 2048
 ```
 git clone git@github.com:miguelcsilva/dotfiles.git
 ```
-### 4. Run the Ubuntu installtion
+### 4. Install stow
 ```
-sudo ./install.sh
+sudo apt install stow
+```
+### 5. Navigate to the repo and create the symlinks to the home directory.
+```
+cd ~/repos/dotfiles
+stow . -t ~/
 ```
 ### 5. Configure the `~/.gitconfig.private` file
 ```
+cp ~/.gitconfig.private.example ~/.gitconfig.private
 vim ~/.gitconfig.private
 ```
