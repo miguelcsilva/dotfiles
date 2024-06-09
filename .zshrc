@@ -21,12 +21,21 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
+## Fuzzy finder
+zi ice from"gh-r" as"program"
+zi light junegunn/fzf
+eval "$(fzf --zsh)"
+zinit light Aloxaf/fzf-tab
+## Zoxide
+zi ice from"gh-r" as"program"
+zi light ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
 
-
-# Keybindings
-bindkey '^u' history-search-backward
-bindkey '^o' history-search-forward
-
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # History
 HISTSIZE=5000
@@ -36,10 +45,10 @@ HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 
-
 # Aliases
 ## Basic
 alias c="clear"
+alias cd="z"
 alias ls="ls --color=auto"
 alias ll="ls -lha"
 alias sve="source .venv/bin/activate"
