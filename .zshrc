@@ -21,7 +21,6 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-
 ## Fuzzy finder
 zinit ice from"gh-r" as"program"
 zinit light junegunn/fzf
