@@ -25,7 +25,6 @@ ORIGINAL_USER_HOME=$(sudo -u "$ORIGINAL_USER" sh -c 'echo $HOME')
 ## Advanced Package Tool (APT)
 print_title "Updating apt"
 apt update
-
 ## Git
 print_title "Installing git"
 apt install git -y

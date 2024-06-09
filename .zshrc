@@ -22,15 +22,15 @@ autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
 
-# ## Fuzzy finder
-# zinit ice from"gh-r" as"program"
-# zinit light junegunn/fzf
-# eval "$(fzf --zsh)"
-# zinit light Aloxaf/fzf-tab
-# ## Zoxide
-# zinit ice from"gh-r" as"program"
-# zinit light ajeetdsouza/zoxide
-# eval "$(zoxide init zsh)"
+## Fuzzy finder
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
+eval "$(fzf --zsh)"
+zinit light Aloxaf/fzf-tab
+## Zoxide
+zinit ice from"gh-r" as"program"
+zinit light ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
 
 # Keybindings
 bindkey '^ ' autosuggest-accept
