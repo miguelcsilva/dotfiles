@@ -26,10 +26,16 @@ zi ice from"gh-r" as"program"
 zi light junegunn/fzf
 eval "$(fzf --zsh)"
 zinit light Aloxaf/fzf-tab
+## Zoxide
+zi ice from"gh-r" as"program"
+zi light ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
+
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # History
 HISTSIZE=5000
@@ -42,6 +48,7 @@ setopt sharehistory
 # Aliases
 ## Basic
 alias c="clear"
+alias cd="z"
 alias ls="ls --color=auto"
 alias ll="ls -lha"
 alias sve="source .venv/bin/activate"
