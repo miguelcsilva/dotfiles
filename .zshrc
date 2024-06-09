@@ -21,12 +21,15 @@ zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-
-
-# Keybindings
-bindkey '^u' history-search-backward
-bindkey '^o' history-search-forward
-
+## Fuzzy finder
+zi ice from"gh-r" as"program"
+zi light junegunn/fzf
+eval "$(fzf --zsh)"
+zinit light Aloxaf/fzf-tab
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # History
 HISTSIZE=5000
@@ -35,7 +38,6 @@ SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
-
 
 # Aliases
 ## Basic
