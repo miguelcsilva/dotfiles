@@ -1,0 +1,15 @@
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig.private.work
+
+[includeIf "gitdir:~/personal/"]
+	path = ~/.gitconfig.private.personal
+
+[push]
+	autoSetupRemote = true
+	default = current
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = vim

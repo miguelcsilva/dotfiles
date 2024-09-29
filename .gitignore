@@ -1,0 +1,4 @@
+.git/
+.gitconfig.private
+.config/wslu/
+.DS_Store
