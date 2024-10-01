@@ -26,25 +26,53 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # Plugins
+
 ## Syntax highlighting
 zinit light zsh-users/zsh-syntax-highlighting
+
 ## Autocompletion
 zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
+
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-## Fuzzy finder
+
+## Fzf
 zinit ice from"gh-r" as"program"
 zinit light junegunn/fzf
 eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+## Eza- cannot be installed with zinit since they don't release macos binaries: https://github.com/eza-community/eza/releases
+
+## Fzf tab
 zinit light Aloxaf/fzf-tab
+
+## Fd
+zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+
+## Delta
+zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
+zinit light dandavison/delta
+
+## Bat
+zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+zinit light sharkdp/bat
+if [ ! -f "$HOME/.config/bat/themes/tokyonight_moon.tmTheme" ]; then
+    curl --create-dirs --output "$HOME/.config/bat/themes/tokyonight_moon.tmTheme" https://raw.githubusercontent.com/folke/tokyonight.nvim/refs/heads/main/extras/sublime/tokyonight_moon.tmTheme
+    bat cache --build
+fi
+export BAT_THEME="tokyonight_moon"
+
 ## Zoxide
 zinit ice from"gh-r" as"program"
 zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
 # Keybindings
-bindkey '^ ' autosuggest-accept
+bindkey '^y' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -75,11 +103,11 @@ fi
 ## Basic
 alias c="clear"
 alias cd="z"
-alias ls="ls --color=auto"
-alias ll="ls -lha"
+alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ll="eza --all --long --git --icons=always"
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
-alias tree="rg --files | tree --fromfile -C -a -L 2"
+alias tree="eza --all --tree --level=2 --ignore-glob=.git"
 alias vim="nvim"
 
 ## Git
