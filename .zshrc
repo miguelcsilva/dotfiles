@@ -26,25 +26,36 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # Plugins
+
 ## Syntax highlighting
 zinit light zsh-users/zsh-syntax-highlighting
+
 ## Autocompletion
 zinit light zsh-users/zsh-completions
 autoload -U compinit && compinit
+
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-## Fuzzy finder
+
+## Fzf
 zinit ice from"gh-r" as"program"
 zinit light junegunn/fzf
 eval "$(fzf --zsh)"
+
+## Fzf tab
 zinit light Aloxaf/fzf-tab
+
+## Fd
+zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
+zinit load sharkdp/fd
+
 ## Zoxide
 zinit ice from"gh-r" as"program"
 zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
 # Keybindings
-bindkey '^ ' autosuggest-accept
+bindkey '^y' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
