@@ -41,13 +41,21 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice from"gh-r" as"program"
 zinit light junegunn/fzf
 eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+## Eza- cannot be installed with zinit since they don't release macos binaries: https://github.com/eza-community/eza/releases
 
 ## Fzf tab
 zinit light Aloxaf/fzf-tab
 
 ## Fd
 zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
-zinit load sharkdp/fd
+zinit light sharkdp/fd
+
+## Delta
+zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
+zinit light dandavison/delta
 
 ## Zoxide
 zinit ice from"gh-r" as"program"
@@ -86,11 +94,11 @@ fi
 ## Basic
 alias c="clear"
 alias cd="z"
-alias ls="ls --color=auto"
-alias ll="ls -lha"
+alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ll="eza --all --long --git --icons=always"
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
-alias tree="rg --files | tree --fromfile -C -a -L 2"
+alias tree="eza --all --tree --level=2 --ignore-glob=.git"
 alias vim="nvim"
 
 ## Git
