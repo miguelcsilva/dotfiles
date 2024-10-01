@@ -76,9 +76,9 @@ bindkey '^y' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:z:*'  fzf-preview 'eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions $realpath'
+zstyle ':fzf-tab:complete:eza:*'  fzf-preview 'eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions $realpath'
+zstyle ':fzf-tab:complete:bat:*'  fzf-preview 'bat $realpath'
 
 # History
 HISTSIZE=5000
