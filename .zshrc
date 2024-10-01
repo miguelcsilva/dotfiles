@@ -57,6 +57,15 @@ zinit light sharkdp/fd
 zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
 zinit light dandavison/delta
 
+## Bat
+zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+zinit light sharkdp/bat
+if [ ! -f "$HOME/.config/bat/themes/tokyonight_moon.tmTheme" ]; then
+    curl --create-dirs --output "$HOME/.config/bat/themes/tokyonight_moon.tmTheme" https://raw.githubusercontent.com/folke/tokyonight.nvim/refs/heads/main/extras/sublime/tokyonight_moon.tmTheme
+    bat cache --build
+fi
+export BAT_THEME="tokyonight_moon"
+
 ## Zoxide
 zinit ice from"gh-r" as"program"
 zinit light ajeetdsouza/zoxide
