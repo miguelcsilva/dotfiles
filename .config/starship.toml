@@ -1,36 +1,29 @@
 format = """
-$python\
+ \
 $username\
 $hostname\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
+$python\
+$cmd_duration\
 $line_break\
 $character\
 """
 
 [python]
-format = '[()(\($virtualenv\)) ](#ffffff)' 
-style = ""
-
-[username]
-format = "[$user](#35a79c bold) "
-show_always = true
-
-[hostname]
-ssh_only = false
-format = 'on [$hostname](#3da4ab bold) '
-trim_at = "."
-disabled = false
+format = ' [()(\($virtualenv\)) ](#c0caf5)' 
 
 [directory]
-format = "at [$path]($style)[$read_only]($read_only_style) "
-read_only = " "
-truncation_length = 10
-truncate_to_repo = true
-style = "#f6cd61 bold"
+style = "#7aa2f7"
 
 [git_branch]
-symbol = ""
-style = "#fe8a71"
+format = "[](#c0caf5) [$branch](#4fd6be)"
+
+[cmd_duration]
+format = "[ took](#c0caf5) [$duration](#ffc777)"
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
