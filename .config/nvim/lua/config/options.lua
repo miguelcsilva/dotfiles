@@ -10,6 +10,7 @@ vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
+vim.opt.foldmethod = "syntax"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
