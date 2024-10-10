@@ -13,3 +13,6 @@ vim.keymap.set("n", "<M-j>", "<cmd>resize -2<cr>", { desc = "Shrink window verti
 
 vim.keymap.set("n", "sv", ":vsplit<Return>", { desc = "Split vertically" })
 vim.keymap.set("n", "ss", ":hsplit<Return>", { desc = "Split horizontally" })
+
+vim.keymap.set("v", "<", "<gv", { desc = "Indent lines left" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent lines right" })
