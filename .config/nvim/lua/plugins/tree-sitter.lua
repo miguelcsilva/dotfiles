@@ -5,12 +5,13 @@ return {
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",
+          "html",
           "json",
           "lua",
-          "html",
           "markdown",
           "markdown_inline",
           "python",
+          "rust",
           "toml",
           "yaml",
         },
