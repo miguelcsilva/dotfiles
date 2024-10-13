@@ -22,6 +22,7 @@ vim.opt.shiftwidth = 4
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
+vim.opt.smartindent = false
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true
 vim.opt.splitright = true
