@@ -16,7 +16,7 @@ filetype indent on		    " loads indent for specify file type
 " tab
 set tabstop=4			    " number of spaces to display <tab> as
 set expandtab			    " convert <tab> keypress to spaces
-set shiftwidth=4 		    " number of spaces to use for each step of auto-indent 
+set shiftwidth=4 		    " number of spaces to use for each step of auto-indent
 set softtabstop=4		    " number of spaces to remove after pressing backspace on <tab>
 set autoindent			    " copy indent from current line when starting a new line
 set smartindent			    " improved autoindent for brackets: {}

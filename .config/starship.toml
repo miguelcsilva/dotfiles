@@ -13,7 +13,7 @@ $character\
 """
 
 [python]
-format = ' [()(\($virtualenv\)) ](#c0caf5)' 
+format = ' [()(\($virtualenv\)) ](#c0caf5)'
 
 [directory]
 style = "#7aa2f7"

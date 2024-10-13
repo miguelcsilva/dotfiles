@@ -72,9 +72,9 @@ return {
       show_diagnostics = not show_diagnostics
       vim.diagnostic.enable(show_diagnostics)
       if show_diagnostics then
-          vim.notify("Diagnostics On")
+        vim.notify("Diagnostics On")
       else
-          vim.notify("Diagnostics Off")
+        vim.notify("Diagnostics Off")
       end
     end
     vim.keymap.set("n", "<leader>xd", toggle_diagnostics, { desc = "[X]Toggle [D]iagnostics" })
