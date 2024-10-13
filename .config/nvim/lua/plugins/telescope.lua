@@ -30,7 +30,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
       },
       defaults = {
-          file_ignore_patterns = {"^%.git/"}
+          file_ignore_patterns = {"^%.git/"},
+          path_display = {shorten = { len = 2, exclude = {1, -1} }},
       },
     })
     pcall(require("telescope").load_extension, "fzf")
