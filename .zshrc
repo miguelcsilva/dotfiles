@@ -107,6 +107,7 @@ alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-use
 alias ll="eza --all --long --git --icons=always"
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
+alias ede='export $(grep -v "^#" .env | xargs -0)'
 alias tree="eza --all --tree --level=2 --ignore-glob=.git"
 alias vim="nvim"
 

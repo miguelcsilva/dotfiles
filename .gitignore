@@ -2,3 +2,4 @@
 .gitconfig.private
 .config/wslu/
 .DS_Store
+.config/pypoetry/auth.toml
