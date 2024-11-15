@@ -127,3 +127,7 @@ alias gri="git rebase -i"
 alias grpo="git remote prune origin"
 alias gst="git status -sb"
 alias gsw="git switch"
+
+## Git
+alias tm="tmux"
+alias tma="tmux attach"
