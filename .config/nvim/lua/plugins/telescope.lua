@@ -31,11 +31,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
         buffers = {
           show_all_buffers = true,
           sort_lastused = true,
-          theme = "dropdown",
           previewer = true,
           mappings = {
             i = {
-              ["<c-d>"] = "delete_buffer",
+              ["<C-d>"] = "delete_buffer",
+            },
+            n = {
+              ["d"] = "delete_buffer",
             },
           },
         },
