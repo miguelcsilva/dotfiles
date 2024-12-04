@@ -19,6 +19,7 @@ return {
         vim.keymap.set("n", "<leader>cS", telescope_builtin.lsp_dynamic_workspace_symbols, { buffer = event.buf, desc = "[C]ode [S]ymbols (Workspace)" })
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = event.buf, desc = "[C]ode [R]ename" })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "[C]ode [A]ction" })
+        vim.api.nvim_set_keymap("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "[C]ode [D]iagnostics" })
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
@@ -54,6 +55,17 @@ return {
       end,
     })
 
+    -- Diagnostics
+    local function setup_lsp_diagnostics()
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false,
+        signs = true,
+        update_in_insert = false,
+        underline = true,
+      })
+    end
+    setup_lsp_diagnostics()
+
     --  Create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -67,17 +79,6 @@ return {
         },
       },
     }
-    local show_diagnostics = true
-    local function toggle_diagnostics()
-      show_diagnostics = not show_diagnostics
-      vim.diagnostic.enable(show_diagnostics)
-      if show_diagnostics then
-        vim.notify("Diagnostics On")
-      else
-        vim.notify("Diagnostics Off")
-      end
-    end
-    vim.keymap.set("n", "<leader>xd", toggle_diagnostics, { desc = "[X]Toggle [D]iagnostics" })
 
     require("mason").setup()
     local ensure_installed = vim.tbl_keys(servers or {})
