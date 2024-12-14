@@ -55,17 +55,6 @@ return {
       end,
     })
 
-    -- Diagnostics
-    local function setup_lsp_diagnostics()
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        signs = true,
-        update_in_insert = false,
-        underline = true,
-      })
-    end
-    setup_lsp_diagnostics()
-
     --  Create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -83,12 +72,11 @@ return {
     require("mason").setup()
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      "lua-language-server",
-      "stylua",
-      "pyright",
-      "ruff",
-      "rust-analyzer",
       "debugpy",
+      "gopls",
+      "lua-language-server",
+      "pyright",
+      "stylua",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
