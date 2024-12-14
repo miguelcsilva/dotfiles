@@ -30,6 +30,14 @@ vim.opt.tabstop = 4
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
 
+-- Diagnostics
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+})
+
 -- Auto-commands
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",

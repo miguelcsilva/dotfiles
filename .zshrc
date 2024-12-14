@@ -90,7 +90,7 @@ setopt sharehistory
 
 # Exports
 export PIP_REQUIRE_VIRTUALENV=true
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export POETRY_CONFIG_DIR="$HOME/.config/pypoetry"
 
 # Aliases

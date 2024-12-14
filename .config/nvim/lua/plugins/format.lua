@@ -14,6 +14,7 @@ return { -- Autoformat
   opts = {
     format_on_save = false,
     formatters_by_ft = {
+      go = { "gofmt", "goimports", "golines" },
       lua = { "stylua" },
       python = {
         "ruff_fix",
