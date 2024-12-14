@@ -87,7 +87,6 @@ return {
       "stylua",
       "pyright",
       "ruff",
-      "rust-analyzer",
       "debugpy",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

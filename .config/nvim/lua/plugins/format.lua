@@ -20,7 +20,6 @@ return { -- Autoformat
         "ruff_organize_imports",
         "ruff_format",
       },
-      rust = { "rustfmt" },
     },
   },
 }
