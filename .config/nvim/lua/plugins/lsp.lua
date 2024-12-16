@@ -15,6 +15,7 @@ return {
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "[G]oto [D]eclaration" })
         vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = event.buf, desc = "[G]oto [R]eferences" })
         vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, { buffer = event.buf, desc = "[G]oto [I]mplementation" })
+        vim.keymap.set("n", "H", vim.lsp.buf.hover, { buffer = event.buf, desc = "LSP Hover" })
         vim.keymap.set("n", "<leader>cs", telescope_builtin.lsp_document_symbols, { buffer = event.buf, desc = "[C]ode [S]ymbols (Document)" })
         vim.keymap.set("n", "<leader>cS", telescope_builtin.lsp_dynamic_workspace_symbols, { buffer = event.buf, desc = "[C]ode [S]ymbols (Workspace)" })
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = event.buf, desc = "[C]ode [R]ename" })
