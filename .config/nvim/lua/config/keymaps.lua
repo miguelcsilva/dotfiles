@@ -1,10 +1,9 @@
 -- Basic
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "<C-e>", ":q!<CR>")
+vim.keymap.set("n", "<C-c>", ":q!<CR>")
 
 -- Normal mode
-vim.keymap.set("n", "<C-c>", "ciw")
 vim.keymap.set("n", "<C-y>", "yiw")
 vim.keymap.set("n", "<C-p>", "viwP")
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
