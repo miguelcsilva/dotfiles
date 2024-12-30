@@ -68,6 +68,17 @@ return {
           },
         },
       },
+      -- html = {
+      --   format = {
+      --     templating = true,
+      --     wrapLineLength = 100,
+      --     wrapAttributes = 'auto',
+      --   },
+      --   hover = {
+      --     documentation = true,
+      --     references = true,
+      --   },
+      -- }
     }
 
     require("mason").setup()
