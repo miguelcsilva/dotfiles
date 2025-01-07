@@ -37,7 +37,21 @@ return {
       require("dap-python").setup(path .. "/venv/bin/python")
       -- DAP UI
       local dapui = require("dapui")
-      dapui.setup()
+      dapui.setup({
+        layouts = {
+          {
+            elements = { {
+              id = "repl",
+              size = 0.5,
+            }, {
+              id = "console",
+              size = 0.5,
+            } },
+            position = "right",
+            size = 80,
+          },
+        },
+      })
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open({})
       end
