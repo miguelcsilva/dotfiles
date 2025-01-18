@@ -1,9 +1,25 @@
 return {
-  "kkoomen/vim-doge",
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":call doge#install()", -- had to be run manually
-  config = function()
-    vim.g.doge_doc_standard_python = "google"
-    vim.keymap.set("n", "<leader>co", "<Plug>(doge-generate)", { desc = "[C]ode d[O]cstring" })
-  end,
+  "danymat/neogen",
+  config = true,
+  opts = {
+    enabled = true,
+    languages = {
+      python = {
+        template = {
+          annotation_convention = "google_docstrings",
+        },
+      },
+    },
+  },
+  keys = {
+    {
+      "<leader>cn",
+      function()
+        require("neogen").generate()
+      end,
+      mode = "n",
+      desc = "[C]ode A[N]notation",
+    },
+  },
+  version = "*",
 }
