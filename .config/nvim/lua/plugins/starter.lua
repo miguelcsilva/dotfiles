@@ -3,26 +3,28 @@ return {
   version = false,
   config = function()
     local starter = require("mini.starter")
+    local builtin = require("telescope.builtin")
     starter.setup({
       items = {
         {
-          action = "Telescope oldfiles",
-          name = "Recent",
+          action = function()
+            builtin.oldfiles({ prompt_title = "Old" })
+          end,
+          name = "Old",
           section = "Telescope",
         },
         {
-          action = "Telescope find_files",
+          action = function()
+            builtin.find_files({ prompt_title = "Files" })
+          end,
           name = "Files",
           section = "Telescope",
         },
         {
-          action = "Telescope live_grep",
+          action = function()
+            builtin.live_grep({ prompt_title = "Files" })
+          end,
           name = "Grep",
-          section = "Telescope",
-        },
-        {
-          action = "Telescope help_tags",
-          name = "Help",
           section = "Telescope",
         },
         { name = "New", action = "enew", section = "Actions" },
