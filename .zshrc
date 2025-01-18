@@ -120,6 +120,7 @@ alias tree="eza --all --tree --level=2 --ignore-glob=.git"
 alias vim="nvim"
 
 ## Git
+alias lg="lazygit"
 alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m"
@@ -135,6 +136,6 @@ alias grpo="git remote prune origin"
 alias gst="git status -sb"
 alias gsw="git switch"
 
-## Git
+## Tmux
 alias tm="tmux"
 alias tma="tmux attach"
