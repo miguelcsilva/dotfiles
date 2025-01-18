@@ -22,7 +22,7 @@ return {
         },
         {
           action = function()
-            builtin.live_grep({ prompt_title = "Files" })
+            builtin.live_grep({ prompt_title = "Grep" })
           end,
           name = "Grep",
           section = "Telescope",
