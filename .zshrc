@@ -96,6 +96,7 @@ setopt appendhistory
 setopt sharehistory
 
 # Exports
+export XDG_CONFIG_HOME="$HOME/.config"
 export PIP_REQUIRE_VIRTUALENV=true
 export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export POETRY_CONFIG_DIR="$HOME/.config/pypoetry"
