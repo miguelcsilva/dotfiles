@@ -68,6 +68,17 @@ return {
           },
         },
       },
+      gopls = {
+        settings = {
+          gopls = {
+            ["ui.inlayhint.hints"] = {
+              compositeLiteralFields = true,
+              constantValues = true,
+              parameterNames = true,
+            },
+          },
+        },
+      },
       -- html = {
       --   format = {
       --     templating = true,
