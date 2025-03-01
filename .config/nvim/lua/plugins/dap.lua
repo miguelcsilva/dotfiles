@@ -48,7 +48,7 @@ return {
               size = 0.5,
             } },
             position = "bottom",
-            size = 50,
+            size = 15,
           },
         },
       })
