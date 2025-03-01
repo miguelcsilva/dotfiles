@@ -58,6 +58,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Grep
     vim.keymap.set("n", "<leader>sg", function() builtin.current_buffer_fuzzy_find(dropdown) end, { desc = "[S]earch [G]rep Buffer" })
     vim.keymap.set("n", "<leader>sG", function() builtin.live_grep({ prompt_title = "Grep Workspace" }) end, { desc = "[S]earch [G]rep Workspace" })
+    vim.keymap.set("n", "<leader>se", function() builtin.live_grep({ vimgrep_arguments = table.insert(require('telescope.config').values.vimgrep_arguments, '--fixed-strings'), prompt_title = "Exact Search Workspace" }) end, { desc = "[S]earch [E]xact" })
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch [W]ord" })
     -- LSP
     vim.keymap.set("n", "<leader>sr", builtin.lsp_references, { desc = "[S]earch [R]eferences" })
