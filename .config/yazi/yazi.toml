@@ -1,0 +1,16 @@
+[manager]
+ratio          = [ 1, 2, 3 ]
+sort_by        = "alphabetical"
+sort_sensitive = false
+sort_reverse   = false
+sort_dir_first = true
+sort_translit  = false
+linemode       = "size_and_mtime"
+show_hidden    = true
+show_symlink   = true
+scrolloff      = 5
+
+[opener]
+edit = [
+	{ run = '${EDITOR:-nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+]
