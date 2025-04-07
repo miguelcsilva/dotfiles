@@ -5,7 +5,7 @@ return {
   keys = {
     {
       "<leader>e",
-      "<cmd>Yazi cwd<cr>",
+      "<cmd>Yazi<cr>",
       mode = "n",
       desc = "[E]xplore directory",
     },
