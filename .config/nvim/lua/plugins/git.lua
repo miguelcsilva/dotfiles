@@ -2,7 +2,17 @@ return {
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        merge_tool = {
+          layout = "diff3_mixed",
+          disable_diagnostics = true,
+          diff_binaries = false,
+          winbar_info = true,
+        },
+      },
+    },
     keys = {
       -- stylua: ignore start
       { "<leader>if", "<cmd>DiffviewFileHistory --follow %<cr>", mode = "n", desc = "D[i]ff [F]ile" },
