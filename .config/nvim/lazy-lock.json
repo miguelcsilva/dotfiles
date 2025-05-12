@@ -1,11 +1,6 @@
 {
   "auto-save.nvim": { "branch": "main", "commit": "29f793a3a7f98129387590269ffe3ad61ab5e509" },
-<<<<<<< HEAD
-  "avante.nvim": { "branch": "main", "commit": "e21f1f07bd5282819b2ced170db5da226dfa5c85" },
-||||||| parent of b7cf309 (Fix confict)
-=======
   "avante.nvim": { "branch": "main", "commit": "aae4cc4014149e544fb00e78687bcdef8335dd10" },
->>>>>>> b7cf309 (Fix confict)
   "blink.cmp": { "branch": "main", "commit": "4f38ce99a472932d5776337f08f7a8180f1f571a" },
   "conform.nvim": { "branch": "master", "commit": "374aaf384e2e841607b8e2fe63fa3ad01d111c91" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
