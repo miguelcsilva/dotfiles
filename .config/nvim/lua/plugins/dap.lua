@@ -22,6 +22,7 @@ return {
         command = "python",
         args = { "-m", "debugpy.adapter" },
       }
+      dap.adapters.debugpy = dap.adapters.python
       local vscode = require("dap.ext.vscode")
       -- setup dap config by VsCode launch.json file
       local json = require("plenary.json")
@@ -33,8 +34,12 @@ return {
         vscode.load_launchjs()
       end
       -- DAP Python
-      local path = require("mason-registry").get_package("debugpy"):get_install_path()
-      require("dap-python").setup(path .. "/venv/bin/python")
+      require("mason-registry").refresh(function()
+        local debugpy = require("mason-registry").get_package("debugpy")
+        if not debugpy:is_installed() then
+          debugpy:install()
+        end
+      end)
       -- DAP UI
       local dapui = require("dapui")
       dapui.setup({
