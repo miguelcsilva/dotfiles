@@ -7,20 +7,41 @@ return {
     "stevearc/dressing.nvim",
   },
   config = function()
+    local function read_secret(path)
+      local f = io.open(path, "r")
+      if f then
+        local v = f:read("*l")
+        f:close()
+        return v
+      end
+    end
+    local company_ai_gateway_url = read_secret(os.getenv("HOME") .. "/.secrets/company-ai-gateway-url")
     require("codecompanion").setup({
       strategies = {
         chat = {
-          adapter = "zendesk_o3_mini",
+          adapter = "company_gpt_41",
         },
       },
       adapters = {
         opts = { show_defaults = false },
-        zendesk_o3_mini = function()
+        company_gpt_41 = function()
           return require("codecompanion.adapters").extend("openai", {
             env = {
-              api_key = "cmd:cat ~/.secrets/zendesk-ai-gateway-api-key 2>/dev/null",
+              api_key = "cmd:cat ~/.secrets/company-ai-gateway-api-key 2>/dev/null",
             },
-            url = "https://ai-gateway.zende.sk/v1/chat/completions",
+            url = company_ai_gateway_url,
+            chat = {
+              model = "gpt-4.1-2025-04-14",
+              temperature = 0,
+            },
+          })
+        end,
+        company_gpt_o3_mini = function()
+          return require("codecompanion.adapters").extend("openai", {
+            env = {
+              api_key = "cmd:cat ~/.secrets/company-ai-gateway-api-key 2>/dev/null",
+            },
+            url = company_ai_gateway_url,
             chat = {
               model = "o3-mini-2025-01-31",
               temperature = 0,
