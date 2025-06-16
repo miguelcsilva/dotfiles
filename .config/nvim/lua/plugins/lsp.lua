@@ -40,14 +40,12 @@ return {
       ensure_installed = vim.tbl_keys(opts.servers),
       handlers = {
         function(server_name)
-          lspconfig[server_name].setup({})
+          local config = opts.servers[server_name] or {}
+          config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+          lspconfig[server_name].setup(config)
         end,
       },
     })
-    for server, config in pairs(opts.servers) do
-      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-      lspconfig[server].setup(config)
-    end
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
