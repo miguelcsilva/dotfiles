@@ -19,19 +19,19 @@ return {
     require("codecompanion").setup({
       strategies = {
         chat = {
-          adapter = "company_gpt_41",
+          adapter = "company_gpt_o3",
         },
       },
       adapters = {
         opts = { show_defaults = false },
-        company_gpt_41 = function()
+        company_gpt_o3 = function()
           return require("codecompanion.adapters").extend("openai", {
             env = {
               api_key = "cmd:cat ~/.secrets/company-ai-gateway-api-key 2>/dev/null",
             },
             url = company_ai_gateway_url,
             chat = {
-              model = "gpt-4.1-2025-04-14",
+              model = "o3-2025-04-16",
               temperature = 0,
             },
           })
