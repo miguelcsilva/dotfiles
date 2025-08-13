@@ -12,58 +12,45 @@ return {
     dependencies = "williamboman/mason.nvim",
   },
   {
-    "saghen/blink.cmp",
-    opts = {
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-      },
-    },
-  },
-  {
     name = "native-lsp",
     dir = vim.fn.stdpath("config"),
     config = function()
       local servers = { "cssls", "gopls", "html", "lua_ls", "pyright" }
 
-      -- Setup Mason first
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = servers,
       })
 
-      -- Configure servers using native APIs
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+
       local server_configs = {
-        cssls = { filetypes = { "css", "scss", "less" } },
-        gopls = { filetypes = { "go", "gomod", "gowork", "gotmpl" } },
-        html = { filetypes = { "html" } },
-        lua_ls = { filetypes = { "lua" } },
-        pyright = { filetypes = { "python" } },
+        cssls = { filetypes = { "css", "scss", "less" }, capabilities = capabilities },
+        gopls = { filetypes = { "go", "gomod", "gowork", "gotmpl" }, capabilities = capabilities },
+        html = { filetypes = { "html" }, capabilities = capabilities },
+        lua_ls = { filetypes = { "lua" }, capabilities = capabilities },
+        pyright = { filetypes = { "python" }, capabilities = capabilities },
       }
 
       for _, server_name in ipairs(servers) do
-        local config = server_configs[server_name] or {}
-        config.capabilities = require("blink.cmp").get_lsp_capabilities()
-
+        local config = server_configs[server_name]
         vim.lsp.config(server_name, config)
         vim.lsp.enable(server_name)
       end
 
-      -- Auto-start LSP for filetypes
+      -- Auto-start LSP servers for matching filetypes
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local ft = vim.bo[args.buf].filetype
-
-          -- Find which server handles this filetype
           for _, server_name in ipairs(servers) do
-            local config = vim.lsp.config[server_name]
-            if config and config.filetypes then
-              if vim.tbl_contains(config.filetypes, ft) then
-                vim.lsp.start({
-                  name = server_name,
-                  cmd = config.cmd or { server_name },
-                }, { bufnr = args.buf })
-                break
-              end
+            local config = server_configs[server_name]
+            if config.filetypes and vim.tbl_contains(config.filetypes, ft) then
+              local start_config = vim.tbl_deep_extend("force", {
+                name = server_name,
+                cmd = { server_name },
+              }, config)
+              vim.lsp.start(start_config, { bufnr = args.buf })
+              break
             end
           end
         end,
