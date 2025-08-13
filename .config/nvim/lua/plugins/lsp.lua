@@ -32,12 +32,42 @@ return {
       })
 
       -- Configure servers using native APIs
+      local server_configs = {
+        cssls = { filetypes = { "css", "scss", "less" } },
+        gopls = { filetypes = { "go", "gomod", "gowork", "gotmpl" } },
+        html = { filetypes = { "html" } },
+        lua_ls = { filetypes = { "lua" } },
+        pyright = { filetypes = { "python" } },
+      }
+
       for _, server_name in ipairs(servers) do
-        vim.lsp.config(server_name, {
-          capabilities = require("blink.cmp").get_lsp_capabilities(),
-        })
+        local config = server_configs[server_name] or {}
+        config.capabilities = require("blink.cmp").get_lsp_capabilities()
+
+        vim.lsp.config(server_name, config)
         vim.lsp.enable(server_name)
       end
+
+      -- Auto-start LSP for filetypes
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          local ft = vim.bo[args.buf].filetype
+
+          -- Find which server handles this filetype
+          for _, server_name in ipairs(servers) do
+            local config = vim.lsp.config[server_name]
+            if config and config.filetypes then
+              if vim.tbl_contains(config.filetypes, ft) then
+                vim.lsp.start({
+                  name = server_name,
+                  cmd = config.cmd or { server_name },
+                }, { bufnr = args.buf })
+                break
+              end
+            end
+          end
+        end,
+      })
 
       -- Preserve existing LSP keymaps and functionality
       vim.api.nvim_create_autocmd("LspAttach", {
