@@ -32,6 +32,22 @@ eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
+# Claude Code
+_claude_with_profile() {
+  export CLAUDE_CONFIG_DIR="$1"
+  command claude "${@:2}"
+}
+
+# Work profile (default)
+claude() {
+  _claude_with_profile "$HOME/.claude" "$@"
+}
+
+# Personal profile
+pclaude() {
+  _claude_with_profile "$HOME/.claude-personal" "$@"
+}
+
 # Plugins
 
 ## Syntax highlighting
