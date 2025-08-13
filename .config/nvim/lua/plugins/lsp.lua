@@ -18,9 +18,7 @@ return {
       local servers = { "cssls", "gopls", "html", "lua_ls", "pyright" }
 
       require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = servers,
-      })
+      require("mason-lspconfig").setup({ ensure_installed = servers })
 
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
@@ -33,7 +31,9 @@ return {
       }
 
       for _, server_name in ipairs(servers) do
-        local config = server_configs[server_name]
+        local base_config = server_configs[server_name]
+        local ok, server_config = pcall(require, "lsp." .. server_name)
+        local config = ok and vim.tbl_deep_extend("force", base_config, server_config) or base_config
         vim.lsp.config(server_name, config)
         vim.lsp.enable(server_name)
       end
@@ -47,7 +47,6 @@ return {
             if config.filetypes and vim.tbl_contains(config.filetypes, ft) then
               local start_config = vim.tbl_deep_extend("force", {
                 name = server_name,
-                cmd = { server_name },
               }, config)
               vim.lsp.start(start_config, { bufnr = args.buf })
               break
