@@ -12,6 +12,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end,
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "nvim-telescope/telescope-frecency.nvim" },
     { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
   },
   config = function()
@@ -19,6 +20,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       extensions = {
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
+        },
+        frecency = {
+          show_scores = false,
+          show_unindexed = true,
+          ignore_patterns = { "*.git/*", "*/tmp/*" },
+          disable_devicons = false,
         },
       },
       pickers = {
@@ -47,13 +54,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
     })
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
+    pcall(require("telescope").load_extension, "frecency")
 
     local builtin = require("telescope.builtin")
     local dropdown = require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
     -- stylua: ignore start
     -- Files/Buffers
     vim.keymap.set("n", "<leader><leader>", function() builtin.buffers(dropdown) end, { desc = "Search Buffers" })
-    vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", "<leader>sf", "<Cmd>Telescope frecency<CR>", { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ld" })
     -- Grep
     vim.keymap.set("n", "<leader>sg", function() builtin.current_buffer_fuzzy_find(dropdown) end, { desc = "[S]earch [G]rep Buffer" })
