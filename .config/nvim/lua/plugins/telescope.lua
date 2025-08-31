@@ -61,7 +61,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- stylua: ignore start
     -- Files/Buffers
     vim.keymap.set("n", "<leader><leader>", function() builtin.buffers(dropdown) end, { desc = "Search Buffers" })
-    vim.keymap.set("n", "<leader>sf", "<Cmd>Telescope frecency<CR>", { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", "<leader>sf", function() require("telescope").extensions.frecency.frecency({ workspace = "CWD" }) end, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ld" })
     -- Grep
     vim.keymap.set("n", "<leader>sg", function() builtin.current_buffer_fuzzy_find(dropdown) end, { desc = "[S]earch [G]rep Buffer" })

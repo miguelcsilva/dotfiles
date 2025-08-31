@@ -32,6 +32,9 @@ eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
+# Rust
+. "$HOME/.cargo/env"
+
 # Claude Code
 _claude_with_profile() {
   export CLAUDE_CONFIG_DIR="$1"
