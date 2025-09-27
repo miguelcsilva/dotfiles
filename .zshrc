@@ -160,3 +160,6 @@ alias gsw="git switch"
 ## Tmux
 alias tm="tmux"
 alias tma="tmux attach"
+
+# Source local config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
