@@ -45,13 +45,10 @@ return {
       dapui.setup({
         layouts = {
           {
-            elements = { {
-              id = "repl",
-              size = 0.5,
-            }, {
-              id = "console",
-              size = 0.5,
-            } },
+            elements = {
+              { id = "repl", size = 0.5 },
+              { id = "console", size = 0.5 },
+            },
             position = "bottom",
             size = 15,
           },
@@ -68,127 +65,25 @@ return {
       end
     end,
     keys = {
-      {
-        "<leader>db",
-        function()
-          require("dap").toggle_breakpoint()
-        end,
-        desc = "[D]ebug [B]reakpoint",
-      },
-      {
-        "<leader>dB",
-        function()
-          require("dap").clear_breakpoints()
-        end,
-        desc = "[D]ebug [B]reakpoint Clear",
-      },
-      {
-        "<leader>dc",
-        function()
-          require("dap").continue()
-        end,
-        desc = "[D]ebug [C]ontinue",
-      },
-      {
-        "<leader>dC",
-        function()
-          require("dap").run_to_cursor()
-        end,
-        desc = "[D]ebug Run to [C]ursor",
-      },
-      {
-        "<leader>di",
-        function()
-          require("dap").step_into()
-        end,
-        desc = "[D]ebug Step [I]nto",
-      },
-      {
-        "<leader>dj",
-        function()
-          require("dap").down()
-        end,
-        desc = "[D]ebug Step [D]own",
-      },
-      {
-        "<leader>dk",
-        function()
-          require("dap").up()
-        end,
-        desc = "[D]ebug Step [U]p",
-      },
-      {
-        "<leader>dO",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "[D]ebug Step [O]ut",
-      },
-      {
-        "<leader>do",
-        function()
-          require("dap").step_over()
-        end,
-        desc = "[D]ebug Step [O]ver",
-      },
-      {
-        "<leader>dp",
-        function()
-          require("dap").pause()
-        end,
-        desc = "[D]ebug [P]ause",
-      },
-      {
-        "<leader>dr",
-        function()
-          require("dap").repl.toggle()
-        end,
-        desc = "[D]ebug Toggle [R]EPL",
-      },
-      {
-        "<leader>ds",
-        function()
-          require("dap").session()
-        end,
-        desc = "[D]ebug [S]ession",
-      },
-      {
-        "<leader>dT",
-        function()
-          require("dap").terminate()
-        end,
-        desc = "[D]ebug [T]erminate",
-      },
-      {
-        "<leader>dw",
-        function()
-          require("dap.ui.widgets").hover()
-        end,
-        desc = "[D]ebug [W]idgets",
-      },
-      {
-        "<leader>dt",
-        function()
-          require("dap-python").test_method()
-        end,
-        desc = "[D]ebug [T]est",
-        ft = "python",
-      },
-      {
-        "<leader>du",
-        function()
-          require("dapui").toggle({})
-        end,
-        desc = "[D]ebug Toggle [U]I",
-      },
-      {
-        "<leader>de",
-        function()
-          require("dapui").eval()
-        end,
-        desc = "[D]ebug [E]val",
-        mode = { "n", "v" },
-      },
+      -- stylua: ignore start
+      { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "[D]ebug [B]reakpoint" },
+      { "<leader>dB", function() require("dap").clear_breakpoints() end, desc = "[D]ebug [B]reakpoint Clear" },
+      { "<leader>dc", function() require("dap").continue() end, desc = "[D]ebug [C]ontinue" },
+      { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "[D]ebug Run to [C]ursor" },
+      { "<leader>di", function() require("dap").step_into() end, desc = "[D]ebug Step [I]nto" },
+      { "<leader>dj", function() require("dap").down() end, desc = "[D]ebug Step [D]own" },
+      { "<leader>dk", function() require("dap").up() end, desc = "[D]ebug Step [U]p" },
+      { "<leader>dO", function() require("dap").step_out() end, desc = "[D]ebug Step [O]ut" },
+      { "<leader>do", function() require("dap").step_over() end, desc = "[D]ebug Step [O]ver" },
+      { "<leader>dp", function() require("dap").pause() end, desc = "[D]ebug [P]ause" },
+      { "<leader>dr", function() require("dap").repl.toggle() end, desc = "[D]ebug Toggle [R]EPL" },
+      { "<leader>ds", function() require("dap").session() end, desc = "[D]ebug [S]ession" },
+      { "<leader>dT", function() require("dap").terminate() end, desc = "[D]ebug [T]erminate" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "[D]ebug [W]idgets" },
+      { "<leader>dt", function() require("dap-python").test_method() end, desc = "[D]ebug [T]est", ft = "python" },
+      { "<leader>du", function() require("dapui").toggle({}) end, desc = "[D]ebug Toggle [U]I" },
+      { "<leader>de", function() require("dapui").eval() end, desc = "[D]ebug [E]val", mode = { "n", "v" } },
+      -- stylua: ignore end
     },
   },
 }

@@ -76,11 +76,11 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
-        local telescope_builtin = require("telescope.builtin")
-        vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, { buffer = event.buf, desc = "[G]oto [D]efinition" })
+        local fzf = require("fzf-lua")
+        vim.keymap.set("n", "gd", fzf.lsp_definitions, { buffer = event.buf, desc = "[G]oto [D]efinition" })
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "[G]oto [D]eclaration" })
-        vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = event.buf, desc = "[G]oto [R]eferences" })
-        vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, { buffer = event.buf, desc = "[G]oto [I]mplementation" })
+        vim.keymap.set("n", "gr", fzf.lsp_references, { buffer = event.buf, desc = "[G]oto [R]eferences" })
+        vim.keymap.set("n", "gi", fzf.lsp_implementations, { buffer = event.buf, desc = "[G]oto [I]mplementation" })
         vim.keymap.set("n", "H", vim.lsp.buf.hover, { buffer = event.buf, desc = "LSP Hover" })
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = event.buf, desc = "[C]ode [R]ename" })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "[C]ode [A]ction" })

@@ -3,32 +3,16 @@ return {
   version = false,
   config = function()
     local starter = require("mini.starter")
-    local builtin = require("telescope.builtin")
+    local fzf = require("fzf-lua")
     starter.setup({
       items = {
-        {
-          action = function()
-            builtin.oldfiles({ prompt_title = "Old" })
-          end,
-          name = "Old",
-          section = "Telescope",
-        },
-        {
-          action = function()
-            builtin.find_files({ prompt_title = "Files" })
-          end,
-          name = "Files",
-          section = "Telescope",
-        },
-        {
-          action = function()
-            builtin.live_grep({ prompt_title = "Grep" })
-          end,
-          name = "Grep",
-          section = "Telescope",
-        },
+        -- stylua: ignore start
+        { action = function() fzf.oldfiles({ prompt = "Old> " }) end, name = "Old", section = "FzfLua" },
+        { action = function() fzf.files({ prompt = "Files> " }) end, name = "Files", section = "FzfLua" },
+        { action = function() fzf.live_grep({ prompt = "Grep> " }) end, name = "Grep", section = "FzfLua" },
         { name = "New", action = "enew", section = "Actions" },
         { name = "Quit", action = "qall", section = "Actions" },
+        -- stylua: ignore end
       },
       content_hooks = {
         starter.gen_hook.adding_bullet(),
