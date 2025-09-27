@@ -12,4 +12,10 @@ description: Create a pull request using gh CLI following the repository's PR te
 
 ## Your task
 
-Read the `.github/PULL_REQUEST_TEMPLATE.md` file and create a pull request using `gh pr create` that follows the template structure and format.
+1. Read the `.github/PULL_REQUEST_TEMPLATE.md` file
+2. Create a pull request using `gh pr create` that follows the template structure and format
+3. Add the appropriate GitHub label
+4. Add any recommended reviewer
+5. After creating the PR, provide only:
+   - The PR URL
+   - A one sentence summary of what was changed

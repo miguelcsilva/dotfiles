@@ -1,7 +1,8 @@
 # Summary
 **Title:** <!-- Brief, descriptive title of the changes -->
-**Type:** <!-- Select one: Bug fix | Enhancement | Documentation | Configuration | Refactoring | New feature -->
 **Issue:** <!-- If applicable: Closes #123 -->
+
+Reviewers: miguelcsilva
 
 ## Description
 <!-- Brief summary of what changed and why. -->
