@@ -142,6 +142,7 @@ alias vim="nvim"
 
 ## Git
 alias lg="lazygit"
+alias ld="lazydocker"
 alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m"
