@@ -1,15 +1,23 @@
 return {
-  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
   dependencies = {
-    { "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-    "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "saghen/blink.cmp",
   },
-  opts = {
-    servers = {
-      cssls = {},
+  config = function()
+    require("mason").setup()
+
+    local servers = {
+      ["css-lsp"] = {
+        cmd = { "vscode-css-language-server", "--stdio" },
+        filetypes = { "css", "scss", "less" },
+        root_markers = { "package.json", ".git" },
+        name = "cssls",
+      },
       gopls = {
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git" },
         settings = {
           gopls = {
             ["ui.inlayhint.hints"] = {
@@ -20,40 +28,59 @@ return {
           },
         },
       },
-      html = {},
-      lua_ls = {
+      ["html-lsp"] = {
+        cmd = { "vscode-html-language-server", "--stdio" },
+        filetypes = { "html" },
+        root_markers = { "package.json", ".git" },
+        name = "html",
+      },
+      ["lua-language-server"] = {
+        cmd = { "lua-language-server" },
+        filetypes = { "lua" },
+        root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+        name = "lua_ls",
         settings = {
           Lua = {
+            runtime = { version = "LuaJIT" },
             diagnostics = { globals = { "vim" } },
+            workspace = {
+              checkThirdParty = false,
+              library = { vim.env.VIMRUNTIME },
+            },
           },
         },
       },
-      pyright = {},
-    },
-  },
-  config = function(_, opts)
-    local lspconfig = require("lspconfig")
-    local mason = require("mason")
-    local mason_lspconfig = require("mason-lspconfig")
-    mason.setup()
-    mason_lspconfig.setup({
-      ensure_installed = vim.tbl_keys(opts.servers),
-      handlers = {
-        function(server_name)
-          local config = opts.servers[server_name] or {}
-          config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-          lspconfig[server_name].setup(config)
-        end,
+      ty = {
+        cmd = { "ty", "server" },
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
+        settings = {
+          ty = {},
+        },
       },
+    }
+
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+    for mason_name, config in pairs(servers) do
+      local lsp_name = config.name or mason_name
+      config.capabilities = capabilities
+      vim.lsp.config(lsp_name, config)
+      vim.lsp.enable(lsp_name)
+    end
+
+    require("mason-tool-installer").setup({
+      ensure_installed = vim.tbl_keys(servers),
     })
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
       callback = function(event)
-        local telescope_builtin = require("telescope.builtin")
-        vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, { buffer = event.buf, desc = "[G]oto [D]efinition" })
+        local fzf = require("fzf-lua")
+        vim.keymap.set("n", "gd", fzf.lsp_definitions, { buffer = event.buf, desc = "[G]oto [D]efinition" })
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "[G]oto [D]eclaration" })
-        vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { buffer = event.buf, desc = "[G]oto [R]eferences" })
-        vim.keymap.set("n", "gi", telescope_builtin.lsp_implementations, { buffer = event.buf, desc = "[G]oto [I]mplementation" })
+        vim.keymap.set("n", "gr", fzf.lsp_references, { buffer = event.buf, desc = "[G]oto [R]eferences" })
+        vim.keymap.set("n", "gi", fzf.lsp_implementations, { buffer = event.buf, desc = "[G]oto [I]mplementation" })
         vim.keymap.set("n", "H", vim.lsp.buf.hover, { buffer = event.buf, desc = "LSP Hover" })
         vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = event.buf, desc = "[C]ode [R]ename" })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf, desc = "[C]ode [A]ction" })
