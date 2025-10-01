@@ -17,12 +17,6 @@ return {
       vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
       vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
       vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
-      dap.adapters.python = {
-        type = "executable",
-        command = "python",
-        args = { "-m", "debugpy.adapter" },
-      }
-      dap.adapters.debugpy = dap.adapters.python
       local vscode = require("dap.ext.vscode")
       -- setup dap config by VsCode launch.json file
       local json = require("plenary.json")
@@ -34,12 +28,8 @@ return {
         vscode.load_launchjs()
       end
       -- DAP Python
-      require("mason-registry").refresh(function()
-        local debugpy = require("mason-registry").get_package("debugpy")
-        if not debugpy:is_installed() then
-          debugpy:install()
-        end
-      end)
+      require("dap-python").setup()
+      require("dap-python").test_runner = "pytest"
       -- DAP UI
       local dapui = require("dapui")
       dapui.setup({
