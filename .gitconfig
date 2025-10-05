@@ -29,3 +29,6 @@
     colorMoved = default
 [fetch]
 	prune = true
+[user]
+	email = miguelcesilva@gmail.com
+	name = Miguel Silva
