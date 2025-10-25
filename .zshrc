@@ -132,25 +132,24 @@ fi
 ## Basic
 alias c="clear"
 alias cd="z"
-alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ede='export $(grep -v "^#" .env | xargs -0)'
 alias ll="eza --all --long --git --icons=always"
+alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
-alias ede='export $(grep -v "^#" .env | xargs -0)'
 alias tree="eza --all --tree --level=2 --ignore-glob=.git"
+alias vi="nvim"
 alias vim="nvim"
 
 ## Git
-alias lg="lazygit"
-alias ld="lazydocker"
 alias ga="git add"
+alias gac="git add -A && git commit -m"
 alias gb="git branch"
 alias gc="git commit -m"
-alias gac="git add -A && git commit -m"
 alias gcl="git clone"
 alias gco="git checkout"
-alias gm="git merge"
 alias gl='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
+alias gm="git merge"
 alias gpl="git pull"
 alias gps="git push"
 alias gri="git rebase -i"
@@ -161,6 +160,11 @@ alias gsw="git switch"
 ## Tmux
 alias tm="tmux"
 alias tma="tmux attach"
+
+# Others
+alias ld="lazydocker"
+alias lg="lazygit"
+alias uvr="uv run"
 
 # Source local config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
