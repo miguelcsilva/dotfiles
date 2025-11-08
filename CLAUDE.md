@@ -16,7 +16,6 @@ This is a personal dotfiles repository for easy setup and configuration of devel
   - `nvim/` - Neovim configuration with Lua-based setup
   - `kitty/` - Kitty terminal emulator configuration
   - `lazygit/` - LazyGit TUI configuration
-  - `pypoetry/` - Python Poetry configuration
   - `starship.toml` - Starship prompt configuration
   - `yazi/` - Yazi file manager configuration
 

@@ -20,10 +20,6 @@ if [ ! -e /usr/local/bin/starship ]; then
 fi
 eval "$(starship init zsh)"
 
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # Goenv
 export GOENV_ROOT="$HOME/.goenv"
@@ -31,9 +27,6 @@ export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-
-# Rust
-. "$HOME/.cargo/env"
 
 # Claude Code
 _claude_with_profile() {
@@ -118,7 +111,6 @@ setopt sharehistory
 export ENVIRONMENT="local"
 export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export PIP_REQUIRE_VIRTUALENV=true
-export POETRY_CONFIG_DIR="$HOME/.config/pypoetry"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Aliases

@@ -4,3 +4,4 @@
 \.git
 \.pre-commit-config.yaml
 \stylua.toml
+\.claude
