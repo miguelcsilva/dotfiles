@@ -65,6 +65,12 @@ return {
           },
         },
       },
+      templ = {
+        cmd = { "go", "tool", "templ", "lsp" },
+        filetypes = { "templ" },
+        root_markers = { "go.work", "go.mod", ".git" },
+        settings = {},
+      },
     }
 
     local capabilities = require("blink.cmp").get_lsp_capabilities()
