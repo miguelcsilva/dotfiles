@@ -17,10 +17,10 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent lines left" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent lines right" })
 
 -- Jumping windows
-vim.keymap.set("n", "<C-Left>", "<C-w>h", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-Right>", "<C-w>l", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-Down>", "<C-w>j", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-Up>", "<C-w>k", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-S-Left>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-S-Right>", "<C-w>l", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-S-Down>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-S-Up>", "<C-w>k", { desc = "Move focus to the upper window" })
 
 -- Resizing windows
 vim.keymap.set("n", "<M-h>", "<cmd>vertical resize -2<cr>", { desc = "Shrink window horizontally" })
