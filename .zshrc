@@ -41,7 +41,12 @@ claude() {
 
 # Personal profile
 pclaude() {
-  _claude_with_profile "$HOME/.claude-personal" "$@"
+  (
+    unset ANTHROPIC_BEDROCK_BASE_URL
+    unset CLAUDE_CODE_USE_BEDROCK
+    unset CLAUDE_CODE_SKIP_BEDROCK_AUTH
+    _claude_with_profile "$HOME/.claude-personal" "$@"
+  )
 }
 
 # Plugins
