@@ -45,6 +45,8 @@ pclaude() {
     unset ANTHROPIC_BEDROCK_BASE_URL
     unset CLAUDE_CODE_USE_BEDROCK
     unset CLAUDE_CODE_SKIP_BEDROCK_AUTH
+    export DISABLE_NON_ESSENTIAL_MODEL_CALLS=1
+    export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
     _claude_with_profile "$HOME/.claude-personal" "$@"
   )
 }
