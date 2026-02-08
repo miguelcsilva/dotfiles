@@ -51,6 +51,22 @@ pclaude() {
   )
 }
 
+# Codex
+_codex_with_profile() {
+  export CODEX_HOME="$1"
+  command codex "${@:2}"
+}
+
+# Work profile (default)
+codex() {
+  _codex_with_profile "$HOME/.codex" "$@"
+}
+
+# Personal profile
+pcodex() {
+  _codex_with_profile "$HOME/.codex-personal" "$@"
+}
+
 # Plugins
 
 ## Syntax highlighting
