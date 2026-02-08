@@ -113,6 +113,9 @@ zinit ice from"gh-r" as"program"
 zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
+## Direnv
+eval "$(direnv hook zsh)"
+
 # Keybindings
 bindkey '^y' autosuggest-accept
 
