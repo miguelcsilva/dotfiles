@@ -1,4 +1,4 @@
-# CLAUDE.md - Dotfiles Repository
+# AGENTS.md - Dotfiles Repository
 
 This is a personal dotfiles repository for easy setup and configuration of development environments, primarily focused on Neovim, shell configuration, and various development tools.
 
@@ -52,7 +52,7 @@ For linting and formatting:
 - `stylua` - Format Lua files (configured via stylua.toml)
 - `pre-commit run --all-files` - Run all pre-commit hooks
 
-## Notes for Claude
+## Notes for Agents
 
 - This is a dotfiles repository focused on development environment setup
 - Primary editor is Neovim with extensive Lua configuration
