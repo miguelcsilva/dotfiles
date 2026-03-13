@@ -117,6 +117,8 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
 # Keybindings
+bindkey -v
+KEYTIMEOUT=1
 bindkey '^y' autosuggest-accept
 
 # Completion styling
