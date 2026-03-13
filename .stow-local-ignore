@@ -1,7 +1,7 @@
 ^/README.*
+^/AGENTS\.md
 \.gitignore
 \.gitconfig.private.example
 \.git
 \.pre-commit-config.yaml
 \stylua.toml
-\.claude

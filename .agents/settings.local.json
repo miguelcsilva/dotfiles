@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/miguel/.config/**)",
+      "Read(//home/miguel/**)",
+      "Bash(echo $TERMINAL)",
+      "Read(//etc/**)",
+      "Bash(systemctl --user list-unit-files:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
