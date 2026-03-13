@@ -1,131 +1,172 @@
 ---
 name: creating-skills
 description: >
-  Guides creating new agent skills. Use when the user asks to create, add, or
-  write a new skill. Covers file structure, SKILL.md authoring, frontmatter
-  rules, content guidelines, and where to place the skill (globally or
-  locally for a specific project).
+  Create new agent skills following best practices. Use when the user asks to
+  create, author, or scaffold a new skill, or when they ask about skill
+  structure, metadata, file organisation, or where to place a skill.
 ---
 
 # Creating Skills
 
-## First: ask scope
+A meta-skill for authoring new agent skills. Follow this guide to produce
+well-structured, effective skills.
 
-Before creating anything, ask the user:
+## Workflow
 
-> "Should this skill be **global** (available across all projects on this
-> machine) or **local** (only for the current project)?"
+When asked to create a new skill:
 
----
+1. **Gather requirements** — ask the user:
+   - What task or domain should the skill cover?
+   - Should it be **global** (available across all projects on this machine) or **local** (only for the current project)?
+   - Does it need bundled scripts, templates, or reference files?
 
-## Global skills
+2. **Choose a location**:
 
-Global skills live in the dotfiles repository, inside `.agents/skills/`.
-That directory is symlinked to all agents' skill directories via GNU stow,
-so every tool picks them up automatically across the whole machine.
+   **Global** — lives in the dotfiles repo, symlinked to all agent tool directories via GNU stow:
+   ```
+   <dotfiles-repo>/.agents/skills/<skill-name>/
+   ```
+   Look for `.agents/skills/` in common locations (`~/dotfiles`, `~/personal/repositories/dotfiles`, etc.).
 
-Ask the user where their dotfiles repo is if you don't know, or look for
-a `.agents/skills/` directory in common locations (`~/dotfiles`,
-`~/personal/repositories/dotfiles`, etc.).
+   **Local** — lives inside the current project:
+   ```
+   <project-root>/.agents/skills/<skill-name>/
+   ```
 
-```
-<dotfiles-repo>/.agents/skills/<skill-name>/
-├── SKILL.md
-└── <optional files>
-```
+3. **Choose a directory structure** based on complexity:
 
----
+   **Simple** (single file):
+   ```
+   <skill-name>/
+   └── SKILL.md
+   ```
 
-## Local skills
+   **Standard** (instructions + references):
+   ```
+   <skill-name>/
+   ├── SKILL.md
+   ├── REFERENCE.md
+   └── EXAMPLES.md
+   ```
 
-Local skills live inside the current project directory:
+   **Advanced** (instructions + code + resources):
+   ```
+   <skill-name>/
+   ├── SKILL.md
+   ├── REFERENCE.md
+   ├── EXAMPLES.md
+   ├── scripts/
+   │   └── helper.py
+   └── templates/
+       └── template.md
+   ```
 
-```
-<project-root>/.agents/skills/<skill-name>/
-├── SKILL.md
-└── <optional files>
-```
+4. **Write the SKILL.md** following the structure below.
+5. **Validate** against the checklist at the end of this document.
 
----
+## SKILL.md Structure
 
-## SKILL.md structure
+Every SKILL.md must have YAML frontmatter followed by a markdown body.
 
-Every skill needs a `SKILL.md` with YAML frontmatter followed by the body:
+### Frontmatter
 
 ```yaml
 ---
-name: kebab-case-name
-description: >
-  What it does and when to use it. Written in third person. Include key
-  trigger words and "Use when..." context. Max 1024 characters, no XML tags.
+name: your-skill-name
+description: What this skill does and when to use it. Include trigger phrases and scenarios.
 ---
 ```
 
-**`name` rules:** max 64 chars, lowercase letters/numbers/hyphens only, no
-reserved words ("anthropic", "claude"), no XML tags.
+**`name` rules:**
+- Max 64 characters
+- Lowercase letters, numbers, and hyphens only
+- No XML tags
+- Cannot contain reserved words ("anthropic", "claude")
 
-**`description` rules:** always third person ("Processes X files" not "I can
-help with X"). Be specific — the description is the only thing used to decide
-whether to activate the skill. Include file types, keywords, and use-case
-triggers. Vague descriptions like "Helps with documents" cause the skill to be
-ignored.
+**`description` rules:**
+- Non-empty, max 1024 characters, no XML tags
+- Must answer: (1) what does it do? (2) when should it be used?
+- Lead with the capability, follow with trigger conditions
+- Mention key file types, tools, or domains so the agent can match user intent
 
-## Body content guidelines
+### Body
 
-**Be concise.** Only include context the agent doesn't already have. Every
-token in SKILL.md competes with conversation history. Challenge each paragraph:
-does this justify its cost?
+Keep the body under 5k tokens. Use this structure:
+
+```markdown
+# Skill Title
+
+## Quick Start
+[Minimal example showing the most common use case]
+
+## Instructions
+[Step-by-step guidance]
+
+## Rules and Constraints
+[Hard rules — formatting, naming, safety]
+
+## Examples
+[2–3 concrete input/output examples]
+
+## Bundled Resources
+[Describe any sibling files and when to read them]
+```
+
+### Sibling files (loaded on demand)
+
+Reference additional files from the body using relative paths:
+
+```markdown
+For the full API reference, see [REFERENCE.md](REFERENCE.md).
+```
+
+Key principles:
+- Keep references **one level deep** — never chain (SKILL.md → a.md → b.md)
+- Push specialised content into sibling files; keep SKILL.md focused on the common path
+- For files longer than 100 lines, add a table of contents at the top
+
+## Writing Effective Instructions
+
+**Be specific and procedural:**
+```markdown
+<!-- Bad -->
+Make sure the code is good.
+
+<!-- Good -->
+1. Run the linter: `python -m flake8 src/`
+2. If linting passes, run tests: `pytest tests/ -v`
+3. If any test fails, read the traceback and fix the issue before proceeding.
+```
+
+**Use conditional logic for branching workflows:**
+```markdown
+- If the user provides a file path: read the file and proceed
+- If the user provides raw text: save to a temp file first
+- If neither: ask for input before continuing
+```
+
+**Define outputs explicitly** — specify format, file name, and location.
 
 **Set the right degree of freedom:**
 - High freedom (prose steps) — when multiple approaches are valid
 - Medium freedom (pseudocode/templates) — when a preferred pattern exists
-- Low freedom (exact commands) — for fragile, destructive, or consistency-critical operations
+- Low freedom (exact commands) — for fragile or destructive operations
 
-**Use progressive disclosure.** Keep SKILL.md as an overview under 500 lines.
-Put detailed reference material in sibling files and link to them:
+## Naming Conventions
 
-```markdown
-## Advanced usage
-See [reference.md](reference.md) for the full API reference.
-```
+Prefer gerund form: `processing-pdfs`, `analysing-spreadsheets`, `managing-databases`.
+Noun phrases (`pdf-processing`) and action-oriented names (`process-pdfs`) are also fine.
+Avoid vague names like `helper`, `utils`, `tools`.
 
-Sibling files are loaded on demand — they cost zero tokens until needed.
+## Validation Checklist
 
-**Keep references one level deep.** Never chain references
-(SKILL.md → a.md → b.md). All linked files must be referenced directly from
-SKILL.md so the agent reads complete files rather than partial previews.
-
-**For reference files longer than 100 lines,** add a table of contents at the
-top so the agent can see the full scope even on a partial read.
-
-**Use concrete examples**, not abstract descriptions. For output format or
-style, provide input/output pairs. For workflows, provide a copyable checklist:
-
-```
-Progress:
-- [ ] Step 1: ...
-- [ ] Step 2: ...
-```
-
-**Other rules:**
-- Consistent terminology throughout (pick one word per concept)
-- No time-sensitive statements ("as of 2025..." will rot)
-- Forward slashes in all paths — never backslashes
-- Name files descriptively (`form_validation_rules.md` not `doc2.md`)
-- Provide a default approach rather than listing many options
-
-## Naming conventions
-
-Prefer gerund form: `processing-pdfs`, `analyzing-spreadsheets`,
-`managing-databases`. Noun phrases (`pdf-processing`) and action-oriented names
-(`process-pdfs`) are also fine. Avoid vague names like `helper`, `utils`,
-`tools`.
-
-## Quick checklist before finishing
-
-- Description is specific, third person, includes trigger keywords
-- SKILL.md body under 500 lines
-- File references are one level deep from SKILL.md
-- No time-sensitive information
-- Consistent terminology
-- Concrete examples, not abstract descriptions
+- [ ] `name` and `description` present and follow the rules
+- [ ] Name: lowercase, hyphens only, under 64 chars, no reserved words
+- [ ] Description: under 1024 chars, describes what + when, no XML tags
+- [ ] Body: under 5k tokens
+- [ ] Instructions: procedural, specific, numbered steps where appropriate
+- [ ] At least one concrete example showing input and expected output
+- [ ] Sibling files referenced from the body with relative paths
+- [ ] Specialised content in sibling files, not the main body
+- [ ] No time-sensitive statements that will rot
+- [ ] Consistent terminology throughout (one word per concept)
