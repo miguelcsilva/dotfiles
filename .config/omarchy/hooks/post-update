@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+
+script_path="${BASH_SOURCE[0]}"
+while [[ -L "$script_path" ]]; do
+  script_dir="$(cd -P "$(dirname "$script_path")" && pwd)"
+  script_path="$(readlink "$script_path")"
+  [[ "$script_path" != /* ]] && script_path="$script_dir/$script_path"
+done
+
+script_dir="$(cd -P "$(dirname "$script_path")" && pwd)"
+dotfiles_root="$(cd "$script_dir/../../.." && pwd)"
+tmux_target="$HOME/.config/tmux/tmux.conf"
+
+stow --dir="$dotfiles_root" --restow --target="$HOME" .
+
+if pgrep -x tmux >/dev/null; then
+  tmux source-file "$tmux_target"
+fi
