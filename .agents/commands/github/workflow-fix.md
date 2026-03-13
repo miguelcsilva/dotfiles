@@ -5,7 +5,7 @@ description: Find the latest failing GitHub Actions workflow for the current bra
 
 Find the latest failing GitHub Actions workflow for the current branch, diagnose the failure, and fix it.
 
-Use the `github-workflows` skill for all workflow and run operations, including the debugging patterns and common failure categories documented in it.
+Use the `github-workflow` skill for all workflow and run operations, including the debugging patterns and common failure categories documented in it.
 
 ## Instructions
 
@@ -52,7 +52,7 @@ Also read the workflow file directly from `.github/workflows/` if needed for the
 
 ### 5. Diagnose the root cause
 
-Based on the logs and workflow definition, determine the root cause. Refer to the `github-workflows` skill for common failure categories and resolution patterns:
+Based on the logs and workflow definition, determine the root cause. Refer to the `github-workflow` skill for common failure categories and resolution patterns:
 
 - Dependency issues, test failures, build errors, configuration errors, workflow YAML issues, permissions, timeouts, infrastructure.
 

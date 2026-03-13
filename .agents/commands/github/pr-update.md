@@ -5,7 +5,7 @@ description: Update the pull request for the current branch with the latest chan
 
 Update the pull request for the current branch with the latest changes.
 
-Use the `github-prs` skill for all PR operations and the `gh` CLI reference within it.
+Use the `github-pr` skill for all PR operations and the `gh` CLI reference within it.
 
 ## Instructions
 

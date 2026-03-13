@@ -5,7 +5,7 @@ description: Create a pull request for the current branch.
 
 Create a pull request for the current branch.
 
-Use the `github-prs` skill for all PR operations and the `gh` CLI reference within it.
+Use the `github-pr` skill for all PR operations and the `gh` CLI reference within it.
 
 ## Instructions
 
