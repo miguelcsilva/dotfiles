@@ -1,0 +1,5 @@
+ui:
+  hideHeader: true
+  fileTreeWidth: 25
+  icons: nerd-fonts-filetype
+  sideBySide: false

@@ -19,8 +19,16 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    side-by-side = true
+    navigate = true
+    side-by-side = false
+    hunk-header-style = file line-number syntax
+    hunk-header-decoration-style = blue ol
+    file-style = bold yellow ul
+    file-decoration-style = none
+    line-numbers = true
+
+[pager]
+	diff = diffnav
 
 [merge]
     conflictstyle = diff3
