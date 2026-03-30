@@ -49,7 +49,13 @@ vim.keymap.set("n", "<leader>si", fzf.lsp_implementations, { desc = "[S]earch [I
 vim.keymap.set("n", "<leader>sd", fzf.lsp_definitions, { desc = "[S]earch [D]efinitions" })
 vim.keymap.set("n", "<leader>sD", fzf.lsp_typedefs, { desc = "[S]earch Type [D]efinitions" })
 vim.keymap.set("n", "<leader>st", fzf.treesitter, { desc = "[S]earch [T]reesitter" })
+-- Git
+vim.keymap.set("n", "<leader>sgs", fzf.git_status, { desc = "[S]earch [G]it [S]tatus" })
+vim.keymap.set("n", "<leader>sgc", fzf.git_commits, { desc = "[S]earch [G]it [C]ommits" })
+-- Diagnostics
+vim.keymap.set("n", "<leader>sX", fzf.diagnostics_workspace, { desc = "[S]earch Diagnostics Workspace" })
 -- Misc
+vim.keymap.set("n", "<leader>s.", fzf.resume, { desc = "[S]earch Resume" })
 vim.keymap.set("n", "<leader>sh", fzf.helptags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sn", function()
   fzf.files({ cwd = vim.fn.stdpath("config") })

@@ -61,6 +61,11 @@ require("which-key").setup({
     { "<leader>sh", desc = "[S]earch [H]elp" },
     { "<leader>sn", desc = "[S]earch [N]eovim files" },
     { "<leader>sk", desc = "[S]earch [K]eymaps" },
+    { "<leader>s.", desc = "[S]earch Resume" },
+    { "<leader>sX", desc = "[S]earch Diagnostics Workspace" },
+    { "<leader>sg", group = "[S]earch [G]it" },
+    { "<leader>sgs", desc = "[S]earch [G]it [S]tatus" },
+    { "<leader>sgc", desc = "[S]earch [G]it [C]ommits" },
 
     -- Toggle operations
     { "<leader>x", group = "[X]Toggle" },

@@ -17,9 +17,6 @@ vim.pack.add({
 
   -- Dependencies (list before plugins that need them)
   "https://github.com/nvim-tree/nvim-web-devicons",
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/MunifTanjim/nui.nvim",
-  "https://github.com/rcarriga/nvim-notify",
   "https://github.com/nvim-neotest/nvim-nio",
   "https://github.com/rafamadriz/friendly-snippets",
 
@@ -35,10 +32,8 @@ vim.pack.add({
   "https://github.com/folke/flash.nvim",
   "https://github.com/mikavilpas/yazi.nvim",
   "https://github.com/folke/which-key.nvim",
-  "https://github.com/okuuva/auto-save.nvim",
 
   -- UI
-  "https://github.com/folke/noice.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/shellRaining/hlchunk.nvim",
   "https://github.com/echasnovski/mini.starter",

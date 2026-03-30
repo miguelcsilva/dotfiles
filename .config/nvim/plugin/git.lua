@@ -18,6 +18,8 @@ vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewClose<cr>", { desc = "[G]it [C]l
 -- Gitsigns
 require("gitsigns").setup({
   attach_to_untracked = true,
+  current_line_blame = true,
+  word_diff = false,
 })
 
 -- stylua: ignore start

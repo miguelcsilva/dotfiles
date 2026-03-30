@@ -9,3 +9,21 @@ vim.keymap.set("n", "<leader>xs", function() require("flash").toggle() end, { de
 
 -- Yazi
 vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "[E]xplore directory" })
+
+-- Auto-save (debounced)
+local save_timer = vim.uv.new_timer()
+local function debounced_save()
+  save_timer:stop()
+  save_timer:start(
+    135,
+    0,
+    vim.schedule_wrap(function()
+      if vim.bo.modified and vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
+        vim.cmd("silent! update")
+      end
+    end)
+  )
+end
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, { callback = debounced_save })
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, { command = "silent! update" })
