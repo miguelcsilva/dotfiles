@@ -18,6 +18,7 @@ vim.pack.add({
   -- Dependencies (list before plugins that need them)
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-neotest/nvim-nio",
+  "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/rafamadriz/friendly-snippets",
 
   -- Core
