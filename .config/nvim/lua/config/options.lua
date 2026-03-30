@@ -10,7 +10,9 @@ vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.expandtab = true
-vim.opt.foldmethod = "syntax"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
@@ -29,6 +31,7 @@ vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
+vim.opt.pumborder = "single"
 
 -- Diagnostics
 vim.diagnostic.config({
