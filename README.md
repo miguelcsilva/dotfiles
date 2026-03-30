@@ -13,12 +13,15 @@ A collection of dotfiles for easy setup and configurations of Linux distribution
 ```
 git clone git@github.com:miguelcsilva/dotfiles.git
 ```
-### 4. Navigate to the repo and create the symlinks to the home directory
+### 4. Set machine profile
+Add `export MACHINE_PROFILE=work` or `export MACHINE_PROFILE=personal` to `~/.zshrc.local`.
+
+### 5. Navigate to the repo and create the symlinks to the home directory
 ```
 cd path/to/repository
-stow . -t ~/
+./stow.sh
 ```
-### 5. Configure the `~/.gitconfig.private` files
+### 6. Configure the `~/.gitconfig.private` files
 ```
 cp ~/.gitconfig.private.example ~/.gitconfig.private.personal
 cp ~/.gitconfig.private.example ~/.gitconfig.private.work
