@@ -32,6 +32,7 @@ vim.opt.tabstop = 4
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 250
 vim.opt.pumborder = "single"
+vim.o.winborder = "single"
 
 -- Diagnostics
 vim.diagnostic.config({
