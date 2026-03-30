@@ -3,3 +3,4 @@
 .config/wslu/
 .DS_Store
 .agents/skills/.system/
+.config/tmux/plugins/
