@@ -1,5 +1,6 @@
 local ensure_installed = {
   "bash",
+  "css",
   "go",
   "gomod",
   "gosum",
@@ -9,6 +10,8 @@ local ensure_installed = {
   "markdown",
   "markdown_inline",
   "python",
+  "scss",
+  "templ",
   "toml",
   "yaml",
 }
