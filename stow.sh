@@ -1,10 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-STOW_ARGS=(--target="$HOME" --restow .)
+PACKAGES=(common)
 
-if [[ "${MACHINE_PROFILE:-}" == "work" ]]; then
-    STOW_ARGS+=(--ignore='\.claude/commands' --ignore='\.claude/skills')
+if [[ "$(uname)" == "Darwin" ]]; then
+    PACKAGES+=(macos)
+else
+    PACKAGES+=(omarchy)
 fi
 
-stow "${STOW_ARGS[@]}"
+stow --target="$HOME" --restow "${PACKAGES[@]}"

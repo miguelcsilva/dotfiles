@@ -158,6 +158,7 @@ alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-use
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
 alias tree="eza --all --tree --level=2 --ignore-glob=.git"
+alias nvim12="$HOME/nvim12-root/AppRun"
 alias vi="nvim"
 alias vim="nvim"
 

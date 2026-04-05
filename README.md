@@ -1,6 +1,14 @@
 # Dotfiles
 
-A collection of dotfiles for easy setup and configurations of Linux distributions.
+A collection of dotfiles for easy setup and configuration of development environments across macOS and omarchy (Linux).
+
+## Structure
+
+- `common/` - Shared configs deployed on all machines (nvim, tmux, zsh, kitty, starship, git, etc.)
+- `macos/` - macOS-specific configs
+- `omarchy/` - omarchy/Linux-specific configs (including agent skills for Claude and Codex)
+
+Uses [GNU Stow](https://www.gnu.org/software/stow/) with multi-package support to symlink the right configs per OS.
 
 ## Usage
 
@@ -13,15 +21,12 @@ A collection of dotfiles for easy setup and configurations of Linux distribution
 ```
 git clone git@github.com:miguelcsilva/dotfiles.git
 ```
-### 4. Set machine profile
-Add `export MACHINE_PROFILE=work` or `export MACHINE_PROFILE=personal` to `~/.zshrc.local`.
-
-### 5. Navigate to the repo and create the symlinks to the home directory
+### 4. Navigate to the repo and create the symlinks to the home directory
 ```
 cd path/to/repository
 ./stow.sh
 ```
-### 6. Configure the `~/.gitconfig.private` files
+### 5. Configure the `~/.gitconfig.private` files
 ```
 cp ~/.gitconfig.private.example ~/.gitconfig.private.personal
 cp ~/.gitconfig.private.example ~/.gitconfig.private.work
