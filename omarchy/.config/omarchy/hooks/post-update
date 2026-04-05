@@ -10,10 +10,10 @@ while [[ -L "$script_path" ]]; do
 done
 
 script_dir="$(cd -P "$(dirname "$script_path")" && pwd)"
-dotfiles_root="$(cd "$script_dir/../../.." && pwd)"
+dotfiles_root="$(cd "$script_dir/../../../.." && pwd)"
 tmux_target="$HOME/.config/tmux/tmux.conf"
 
-stow --dir="$dotfiles_root" --restow --target="$HOME" .
+"$dotfiles_root/stow.sh"
 
 if pgrep -x tmux >/dev/null; then
   tmux source-file "$tmux_target"

@@ -1,6 +1,5 @@
 .git/
 .gitconfig.private
-.config/wslu/
 .DS_Store
-.agents/skills/.system/
-.config/tmux/plugins/
+**/.agents/skills/.system/
+**/.config/tmux/plugins/
