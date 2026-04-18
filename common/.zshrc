@@ -69,6 +69,9 @@ pcodex() {
 
 # Plugins
 
+## Vi mode
+zinit light jeffreytse/zsh-vi-mode
+
 ## Syntax highlighting
 zinit light zsh-users/zsh-syntax-highlighting
 
@@ -117,9 +120,9 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
 # Keybindings
-bindkey -v
-KEYTIMEOUT=1
-bindkey '^y' autosuggest-accept
+zvm_after_init() {
+  bindkey '^y' autosuggest-accept
+}
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
