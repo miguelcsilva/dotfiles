@@ -18,8 +18,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 if [ ! -e /usr/local/bin/starship ]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
-eval "$(starship init zsh)"
-
 
 # Goenv
 export GOENV_ROOT="$HOME/.goenv"
@@ -70,7 +68,18 @@ pcodex() {
 # Plugins
 
 ## Vi mode
+ZVM_INIT_MODE=sourcing
 zinit light jeffreytse/zsh-vi-mode
+
+## Starship (after zvm to avoid zle-keymap-select conflict)
+eval "$(starship init zsh)"
+
+## Fzf
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ## Syntax highlighting
 zinit light zsh-users/zsh-syntax-highlighting
@@ -81,13 +90,6 @@ autoload -U compinit && compinit
 
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
-
-## Fzf
-zinit ice from"gh-r" as"program"
-zinit light junegunn/fzf
-eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ## Eza- cannot be installed with zinit since they don't release macos binaries: https://github.com/eza-community/eza/releases
 
@@ -120,9 +122,7 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
 # Keybindings
-zvm_after_init() {
-  bindkey '^y' autosuggest-accept
-}
+bindkey '^y' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
