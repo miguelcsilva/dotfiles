@@ -14,17 +14,24 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Exports (early, so installers below can use ~/.local/bin)
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
+
 # Starship
-if [ ! -e /usr/local/bin/starship ]; then
-    curl -sS https://starship.rs/install.sh | sh -s -- -y
+if ! command -v starship &>/dev/null; then
+    mkdir -p "$HOME/.local/bin"
+    curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"
 fi
 
 # Goenv
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
+if command -v goenv &>/dev/null; then
+    eval "$(goenv init -)"
+    export GOPATH="$HOME/go"
+    export PATH="$GOROOT/bin:$PATH"
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 # Claude Code
 _claude_with_profile() {
@@ -69,10 +76,8 @@ pcodex() {
 
 ## Vi mode
 ZVM_INIT_MODE=sourcing
+zvm_after_init_commands+=('eval "$(starship init zsh)"')
 zinit light jeffreytse/zsh-vi-mode
-
-## Starship (after zvm to avoid zle-keymap-select conflict)
-eval "$(starship init zsh)"
 
 ## Fzf
 zinit ice from"gh-r" as"program"
@@ -119,7 +124,9 @@ zinit light ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
 ## Direnv
-eval "$(direnv hook zsh)"
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
 # Keybindings
 bindkey '^y' autosuggest-accept
@@ -140,7 +147,6 @@ setopt sharehistory
 
 # Exports
 export ENVIRONMENT="local"
-export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export PIP_REQUIRE_VIRTUALENV=true
 export XDG_CONFIG_HOME="$HOME/.config"
 

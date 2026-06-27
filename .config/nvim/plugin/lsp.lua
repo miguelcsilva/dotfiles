@@ -75,8 +75,12 @@ for mason_name, config in pairs(servers) do
   vim.lsp.enable(lsp_name)
 end
 
+local mason_servers = vim.tbl_filter(function(name)
+  return name ~= "templ"
+end, vim.tbl_keys(servers))
+
 require("mason-tool-installer").setup({
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = mason_servers,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {

@@ -1,0 +1,11 @@
+README.md
+AGENTS.md
+Brewfile
+stow.sh
+stylua.toml
+\.pre-commit-config\.yaml
+\.github
+\.gitignore
+\.gitconfig\.private\.example
+\.stow-local-ignore
+\.git
