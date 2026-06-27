@@ -1,12 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-PACKAGES=(common)
-
-if [[ "$(uname)" == "Darwin" ]]; then
-    PACKAGES+=(macos)
-else
-    PACKAGES+=(omarchy)
+# Install Homebrew if missing
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-stow --target="$HOME" --restow "${PACKAGES[@]}"
+brew bundle install --file="$(dirname "$0")/Brewfile"
+
+stow --target="$HOME" --restow --dir="$(dirname "$0")" .

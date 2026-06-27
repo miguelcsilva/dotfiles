@@ -1,0 +1,11 @@
+brew "direnv"
+brew "eza"
+brew "goenv"
+brew "neovim"
+brew "prek"
+brew "stow"
+brew "tmux"
+brew "uv"
+
+cask "font-jetbrains-mono-nerd-font"
+cask "kitty"
