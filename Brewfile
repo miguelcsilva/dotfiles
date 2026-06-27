@@ -13,6 +13,7 @@ brew "tmux"
 brew "uv"
 
 cask "claude-code"
+cask "dbeaver-community"
 cask "google-chrome"
 cask "font-jetbrains-mono-nerd-font"
 cask "kitty"
