@@ -8,4 +8,6 @@ fi
 
 brew bundle install --file="$(dirname "$0")/Brewfile"
 
+gh extension install dlvhdr/gh-dash 2>/dev/null || gh extension upgrade gh-dash 2>/dev/null || true
+
 stow --target="$HOME" --restow --dir="$(dirname "$0")" .

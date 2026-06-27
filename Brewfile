@@ -9,8 +9,5 @@ brew "stow"
 brew "tmux"
 brew "uv"
 
-tap "dlvhdr/gh-dash"
-brew "dlvhdr/gh-dash/gh-dash"
-
 cask "font-jetbrains-mono-nerd-font"
 cask "kitty"
