@@ -1,11 +1,16 @@
+brew "diffnav"
 brew "direnv"
 brew "eza"
+brew "gh"
 brew "goenv"
 brew "neovim"
 brew "prek"
 brew "stow"
 brew "tmux"
 brew "uv"
+
+tap "dlvhdr/gh-dash"
+brew "dlvhdr/gh-dash/gh-dash"
 
 cask "font-jetbrains-mono-nerd-font"
 cask "kitty"

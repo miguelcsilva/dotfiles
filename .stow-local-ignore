@@ -8,3 +8,4 @@ stylua.toml
 \.gitignore
 \.gitconfig\.private\.example
 \.stow-local-ignore
+\.git
