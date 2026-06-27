@@ -28,6 +28,7 @@ export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 if command -v goenv &>/dev/null; then
     eval "$(goenv init -)"
+    export GOPATH="$HOME/go"
     export PATH="$GOROOT/bin:$PATH"
     export PATH="$PATH:$GOPATH/bin"
 fi
