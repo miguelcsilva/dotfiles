@@ -1,3 +1,5 @@
 cask "1password"
 cask "google-drive"
+cask "logi-options+"
+cask "opensuperwhisper"
 cask "portfolioperformance"

@@ -121,7 +121,6 @@ export BAT_THEME="tokyonight_moon"
 ## Zoxide
 zinit ice from"gh-r" as"program"
 zinit light ajeetdsouza/zoxide
-eval "$(zoxide init zsh)"
 
 ## Direnv
 if command -v direnv &>/dev/null; then
@@ -198,3 +197,5 @@ alias uvr="uv run"
 
 # Source local config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+eval "$(zoxide init zsh)"
