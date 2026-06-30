@@ -67,18 +67,23 @@ defaults:
             lines:
                 width: 15
         issues:
-            updatedAt:
-                width: 5
-            createdAt:
-                width: 5
+            state:
+                hidden: true
             repo:
-                width: 15
+                hidden: true
+            title:
+                grow: true
             creator:
-                width: 10
-            creatorIcon:
-                hidden: false
+                hidden: true
             assignees:
-                width: 20
+                hidden: true
+            comments:
+                hidden: true
+            reactions:
+                hidden: true
+            updatedAt:
+                width: 7
+            createdAt:
                 hidden: true
     refetchIntervalMinutes: 30
 keybindings: {}
