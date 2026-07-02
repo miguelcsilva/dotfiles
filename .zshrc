@@ -159,7 +159,6 @@ fi
 
 ## Basic
 alias c="clear"
-alias cd="z"
 alias ede='export $(grep -v "^#" .env | xargs -0)'
 alias ll="eza --all --long --git --icons=always"
 alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
@@ -198,4 +197,10 @@ alias uvr="uv run"
 # Source local config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# Disable zoxide's "doctor" advisory. It fires a false positive on every `cd`
+# in non-interactive/hybrid shells (e.g. CLI-tool subprocesses) where the chpwd
+# hook isn't registered; it doesn't affect directory tracking in real shells.
+# https://github.com/ajeetdsouza/zoxide/issues/1208
+export _ZO_DOCTOR=0
 eval "$(zoxide init zsh)"
+alias cd="z"
