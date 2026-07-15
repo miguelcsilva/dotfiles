@@ -148,6 +148,8 @@ setopt sharehistory
 export ENVIRONMENT="local"
 export PIP_REQUIRE_VIRTUALENV=true
 export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Aliases
 ## Platform dependent
