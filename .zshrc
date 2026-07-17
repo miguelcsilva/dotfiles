@@ -160,12 +160,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Aliases
-## Platform dependent
-if ismac; then
-  alias cat="bat"
-else
-  alias cat="batcat"
-fi
+alias cat="bat"
 
 ## Basic
 alias c="clear"
