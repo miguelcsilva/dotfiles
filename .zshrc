@@ -206,6 +206,18 @@ alias ld="lazydocker"
 alias lg="lazygit"
 alias uvr="uv run"
 
+# Copy stdin to clipboard via OSC-52 (tmux-aware). Usage: cat file | clip
+clip() {
+  local b64 osc
+  b64=$(base64 | tr -d '\n')
+  osc="\033]52;c;${b64}\a"
+  if [ -n "$TMUX" ]; then
+    printf "\033Ptmux;\033%s\033\\" "$osc"
+  else
+    printf "%b" "$osc"
+  fi
+}
+
 # Source local config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
