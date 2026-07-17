@@ -111,7 +111,7 @@ zinit light BurntSushi/ripgrep
 ## Tree-sitter
 if ! ismac; then
   zinit ice from"gh-r" as"program" bpick"tree-sitter-linux-x64.gz" \
-    mv"tree-sitter* -> tree-sitter"
+    mv"tree-sitter* -> tree-sitter" atclone"chmod +x tree-sitter" atpull"%atclone"
   zinit light tree-sitter/tree-sitter
 fi
 
