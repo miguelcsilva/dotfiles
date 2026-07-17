@@ -108,6 +108,13 @@ zinit light sharkdp/fd
 zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
 
+## Tree-sitter
+if ! ismac; then
+  zinit ice from"gh-r" as"program" bpick"tree-sitter-linux-x64.gz" \
+    mv"tree-sitter* -> tree-sitter"
+  zinit light tree-sitter/tree-sitter
+fi
+
 ## Delta
 zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
 zinit light dandavison/delta
@@ -153,12 +160,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Aliases
-## Platform dependent
-if ismac; then
-  alias cat="bat"
-else
-  alias cat="batcat"
-fi
+alias cat="bat"
 
 ## Basic
 alias c="clear"
