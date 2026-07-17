@@ -1,10 +1,4 @@
-ismac(){
-  if [[ "$(uname)" == "Darwin" ]]; then
-    return true
-  else
-    return false
-  fi
-}
+ismac() { [[ "$(uname)" == "Darwin" ]]; }
 
 # Zinit plugin manager
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -96,7 +90,12 @@ autoload -U compinit && compinit
 ## Autosuggestions
 zinit light zsh-users/zsh-autosuggestions
 
-## Eza- cannot be installed with zinit since they don't release macos binaries: https://github.com/eza-community/eza/releases
+## Eza- no macOS release binaries (brew provides it there), so install via
+## zinit on Linux only: https://github.com/eza-community/eza/releases
+if ! ismac; then
+  zinit ice from"gh-r" as"program" pick"eza"
+  zinit light eza-community/eza
+fi
 
 ## Fzf tab
 zinit light Aloxaf/fzf-tab
@@ -104,6 +103,10 @@ zinit light Aloxaf/fzf-tab
 ## Fd
 zinit ice from"gh-r" as"program" mv"fd* -> fd" pick"fd/fd"
 zinit light sharkdp/fd
+
+## Ripgrep
+zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
 
 ## Delta
 zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
@@ -160,11 +163,18 @@ fi
 ## Basic
 alias c="clear"
 alias ede='export $(grep -v "^#" .env | xargs -0)'
-alias ll="eza --all --long --git --icons=always"
-alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias rl="source ~/.zshrc"
 alias sve="source .venv/bin/activate"
-alias tree="eza --all --tree --level=2 --ignore-glob=.git"
+
+## Listing (eza if available, else plain ls)
+if command -v eza &>/dev/null; then
+  alias ll="eza --all --long --git --icons=always"
+  alias ls="eza --all --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+  alias tree="eza --all --tree --level=2 --ignore-glob=.git"
+else
+  alias ll="ls -la"
+  alias tree="ls -R"
+fi
 alias vi="nvim"
 alias vim="nvim"
 
