@@ -206,8 +206,7 @@ alias ld="lazydocker"
 alias lg="lazygit"
 alias uvr="uv run"
 
-# Copy stdin to the system clipboard via OSC-52 (works over ssh). Wraps the
-# escape for tmux passthrough when inside a tmux session. Usage: cat file | clip
+# Copy stdin to clipboard via OSC-52 (tmux-aware). Usage: cat file | clip
 clip() {
   local b64 osc
   b64=$(base64 | tr -d '\n')
