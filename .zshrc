@@ -108,6 +108,13 @@ zinit light sharkdp/fd
 zinit ice from"gh-r" as"program" mv"ripgrep* -> rg" pick"rg/rg"
 zinit light BurntSushi/ripgrep
 
+## Tree-sitter
+if ! ismac; then
+  zinit ice from"gh-r" as"program" bpick"tree-sitter-linux-x64.gz" \
+    mv"tree-sitter* -> tree-sitter"
+  zinit light tree-sitter/tree-sitter
+fi
+
 ## Delta
 zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
 zinit light dandavison/delta
