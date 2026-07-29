@@ -33,6 +33,10 @@
       "rev": "3bc2bd7aef28fbed6643534a0fdd0f19966544bc",
       "src": "https://github.com/shellRaining/hlchunk.nvim"
     },
+    "kulala.nvim": {
+      "rev": "e4e8615dc07d9423f3dd52ad5af962db09d26a52",
+      "src": "https://github.com/mistweaverco/kulala.nvim"
+    },
     "lualine.nvim": {
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"

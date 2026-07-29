@@ -49,6 +49,9 @@ vim.pack.add({
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/mfussenegger/nvim-dap-python",
 
+  -- HTTP
+  "https://github.com/mistweaverco/kulala.nvim",
+
   -- Formatting & Linting
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/mfussenegger/nvim-lint",
