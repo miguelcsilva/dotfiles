@@ -1,0 +1,20 @@
+{
+  "model": "opusplan",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "go@claude-code": true,
+    "server-ui@claude-code": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code": {
+      "source": {
+        "source": "github",
+        "repo": "miguelcsilva/claude-code"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "agentPushNotifEnabled": true
+}
