@@ -15,6 +15,7 @@ Personal macOS development environment managed with [GNU Stow](https://www.gnu.o
 | diffnav | `.config/diffnav/` |
 | Zsh | `.zshrc` |
 | Git | `.gitconfig` |
+| Claude Code | `.claude/` |
 
 ## Setup
 
