@@ -4,3 +4,4 @@
 **/.agents/skills/.system/
 **/.config/tmux/plugins/
 Brewfile.lock.json
+.claude/settings.json
