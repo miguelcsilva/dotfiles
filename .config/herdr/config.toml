@@ -1,29 +1,19 @@
-# herdr - agent-aware terminal multiplexer: https://herdr.dev/docs/configuration/
-# Only overrides live here; see all defaults with `herdr --default-config`.
-# Validate with `herdr config check`, apply with `herdr server reload-config`.
-
 onboarding = false
 
 [theme]
-# Match kitty (current-theme.conf) and nvim (tokyonight-moon)
 name = "tokyo-night"
 
 [keys]
-# Same prefix as tmux.conf
 prefix = "ctrl+space"
 
-# Tabs: ctrl+left/right like tmux windows
 previous_tab = ["prefix+p", "ctrl+left"]
 next_tab = ["prefix+n", "ctrl+right"]
 
-# Pane focus: hjkl like vim, arrows like nvim's <leader><arrow>,
-# plus prefix-free ctrl+alt+hjkl (unused by nvim, which resizes on alt+hjkl)
 focus_pane_left = ["prefix+h", "prefix+left", "ctrl+alt+h"]
 focus_pane_down = ["prefix+j", "prefix+down", "ctrl+alt+j"]
 focus_pane_up = ["prefix+k", "prefix+up", "ctrl+alt+k"]
 focus_pane_right = ["prefix+l", "prefix+right", "ctrl+alt+l"]
 
-# Splits: v / s like nvim's `sv` / `ss`; settings moves off prefix+s
 split_vertical = "prefix+v"
 split_horizontal = ["prefix+s", "prefix+minus"]
 settings = "prefix+comma"
@@ -45,7 +35,6 @@ width = "90%"
 height = "90%"
 
 [ui]
-# Create tabs immediately, like tmux
 prompt_new_tab_name = false
 
 [ui.toast]
