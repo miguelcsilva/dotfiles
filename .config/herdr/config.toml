@@ -14,6 +14,9 @@ focus_pane_down = ["prefix+j", "prefix+down", "ctrl+alt+j"]
 focus_pane_up = ["prefix+k", "prefix+up", "ctrl+alt+k"]
 focus_pane_right = ["prefix+l", "prefix+right", "ctrl+alt+l"]
 
+next_agent = "prefix+a"
+previous_agent = "prefix+shift+a"
+
 split_vertical = "prefix+v"
 split_horizontal = ["prefix+s", "prefix+minus"]
 settings = "prefix+comma"
