@@ -8,6 +8,7 @@ Personal macOS development environment managed with [GNU Stow](https://www.gnu.o
 |------|--------|
 | Neovim | `.config/nvim/` |
 | Tmux | `.config/tmux/` |
+| Herdr | `.config/herdr/` |
 | Kitty | `.config/kitty/` |
 | Starship | `.config/starship.toml` |
 | Yazi | `.config/yazi/` |
