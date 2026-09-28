@@ -50,25 +50,6 @@ pclaude() {
   )
 }
 
-claude-zai() {
-  if [[ -z "$ZAI_API_KEY" ]]; then
-    print -u2 'Set ZAI_API_KEY in ~/.zshrc.local before running claude-zai.'
-    return 1
-  fi
-  (
-    export ANTHROPIC_AUTH_TOKEN="$ZAI_API_KEY"
-    export ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic"
-    export ANTHROPIC_DEFAULT_HAIKU_MODEL="glm-5.3-flash[1m]"
-    export ANTHROPIC_DEFAULT_SONNET_MODEL="glm-5.3-flash[1m]"
-    export ANTHROPIC_DEFAULT_OPUS_MODEL="glm-5.3[1m]"
-    export CLAUDE_CODE_SUBAGENT_MODEL="glm-5.3-flash[1m]"
-    export CLAUDE_CODE_AUTO_COMPACT_WINDOW="1000000"
-    export API_TIMEOUT_MS="3000000"
-    export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
-    _claude_with_profile "$HOME/.claude-zai" "$@"
-  )
-}
-
 # Codex
 _codex_with_profile() {
   export CODEX_HOME="$1"
