@@ -115,6 +115,14 @@ if ! ismac; then
   zinit light tree-sitter/tree-sitter
 fi
 
+## Herdr - brew provides it on macOS, so install via zinit on Linux only:
+## https://github.com/herdrdev/herdr/releases
+if ! ismac; then
+  zinit ice from"gh-r" as"program" bpick"herdr-linux-$(uname -m)" \
+    mv"herdr* -> herdr" atclone"chmod +x herdr" atpull"%atclone"
+  zinit light herdrdev/herdr
+fi
+
 ## Delta
 zinit ice from"gh-r" as"program" mv"delta* -> delta" pick"delta/delta"
 zinit light dandavison/delta
